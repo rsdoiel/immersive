@@ -1,4 +1,4 @@
-ecl-user-shell
+cl-user-shell
 ==============
 
 A brief exploration of using ecl's Lisp repl as a user shell on a Raspberry Pi.
