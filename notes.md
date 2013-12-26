@@ -18,14 +18,13 @@ Run configure with the following options
 ```shell
     cd ecl # if you're not already in the ecl source directory
     ./configure --prefix=/usr/local \
-    --enable-gengc=yes \
-    --enable-precisegc=yes \
     --enable-unicode=yes \
     --with-profile=yes \
     --with-__thread=auto \
     --with-unicode-names=yes \
     --with-profile=yes \
-    --with-dffi=auto
+    --with-dffi=auto \
+    "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
 Install on Raspbian system (takes a long time to compile)
