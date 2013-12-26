@@ -33,12 +33,10 @@ Run configure with the following options
     ./configure --prefix=/usr/local \
     --enable-unicode=yes \
     --enable-threads=auto \
-    --with-__thread=auto \
-    "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
-The CLAGS line is from notes at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html) from 2012. 
-May not be required but I used it in my tests.
+I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is
+dated as 2012. It sounds like this is needed to get threading support on an older version of ecl (13.5.1 was announced 2013-05-28) so I didn't use it.
 
 Install on Raspbian system (takes a long time to compile)
 
