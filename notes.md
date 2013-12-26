@@ -19,11 +19,6 @@ Run configure with the following options
     cd ecl # if you're not already in the ecl source directory
     ./configure --prefix=/usr/local \
     --enable-unicode=yes \
-    --with-profile=yes \
-    --with-__thread=auto \
-    --with-unicode-names=yes \
-    --with-profile=yes \
-    --with-dffi=auto \
     "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
