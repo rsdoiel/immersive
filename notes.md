@@ -1,4 +1,3 @@
-
 Download git repo of [ecl](http://ecls.sourceforge.net/download.html)
 
 ```shell
@@ -9,34 +8,31 @@ Download git repo of [ecl](http://ecls.sourceforge.net/download.html)
 Add the following Raspbian package
 
 ```shell
-    sudo apt-get install rlwrap # (not explicitly needed but handy)
-    sudo apt-get install libffi-dev
-    sudo apt-get install libreadline-fev
+    sudo apt-get install libreadline-dev
     sudo apt-get install libgc-dev
+    sudo apt-get install libffi-dev
 ```
 
 Run configure with the following options
 
 ```shell
+    cd ecl # if you're not already in the ecl source directory
     ./configure --prefix=/usr/local \
-    --enable-boehm=auto \
     --enable-gengc=yes \
     --enable-precisegc=yes \
     --enable-unicode=yes \
     --with-profile=yes \
-    --with-__thread \
+    --with-__thread=auto \
     --with-unicode-names=yes \
-    --with-asdf \
-    --with-profile \
-    --with-dffi=auto \
+    --with-profile=yes \
+    --with-dffi=auto
 ```
 
 Install on Raspbian system (takes a long time to compile)
 
 ```shell
-    echo "START buid $(date)" >> build-time.txt
-    make clean; make;sudo make install
-    echo "END build $(date)" >> build-time.txt
+    make
+    sudo make install
 ```
 
 Confirm ecl's install location and change your shell to it.
