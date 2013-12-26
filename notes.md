@@ -1,11 +1,21 @@
+If you are OK with version 11 of ecl then you can do
+
+```shell
+    sudo apt-get install ecl
+```
+
+If you want to compile the current (i.e. 13.5.1 at time of writing this document) you'll
+need to follow my notes below.
+
+
 Download git repo of [ecl](http://ecls.sourceforge.net/download.html)
 
 ```shell
-    git clone git://git.code.sf.net/p/ecls/ecl ecl
     git clone git://git.code.sf.net/p/ecls/ecl-doc ecl-doc
+    cd ecl # we'll be compiling in this directory.
 ```
 
-Add the following Raspbian package
+I added the the following Raspbian packages to my Raspbian deployment.
 
 ```shell
     sudo apt-get install libgmp-dev
@@ -23,19 +33,21 @@ Run configure with the following options
     ./configure --prefix=/usr/local \
     --enable-unicode=yes \
     --enable-threads=auto \
-    --enable-boehm=yes \
-    --enable-gengc=yes \
-    --enable-precisegc=yes \
     --with-__thread=auto \
     "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
+The CLAGS line is from notes at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html) from 2012. 
+May not be required but I used it in my tests.
+
 Install on Raspbian system (takes a long time to compile)
 
 ```shell
-    make
-    sudo make install
+    make; sudo make install
 ```
 
-Confirm ecl's install location and change your shell to it.
+Confirm ecl's install location, run some toy lisp code then changed my shell to use ecl (e.g. 
+chsh rsdoiel /usr/local/bin/ecl).
+
+
 
