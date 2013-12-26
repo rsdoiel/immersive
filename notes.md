@@ -22,9 +22,8 @@ Run configure with the following options
     cd ecl # if you're not already in the ecl source directory
     ./configure --prefix=/usr/local \
     --enable-unicode=yes \
-    --enable-thread=auto \
+    --enable-threads=auto \
     --enable-boehm=yes \
-    --enable-libatomic=yes \
     --enable-gengc=yes \
     --enable-precisegc=yes \
     --with-__thread=auto \
