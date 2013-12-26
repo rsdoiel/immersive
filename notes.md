@@ -7,15 +7,8 @@ If you are OK with version 11 of ecl then you can do
 If you want to compile the current (i.e. 13.5.1 at time of writing this document) you'll
 need to follow my notes below.
 
-
-Download git repo of [ecl](http://ecls.sourceforge.net/download.html)
-
-```shell
-    git clone git://git.code.sf.net/p/ecls/ecl-doc ecl-doc
-    cd ecl # we'll be compiling in this directory.
-```
-
-I added the the following Raspbian packages to my Raspbian deployment.
+I added the the following Raspbian packages to my Raspbian deployment based on looking at what
+was required to install the old version 11 debian package.
 
 ```shell
     sudo apt-get install libgmp-dev
@@ -26,17 +19,24 @@ I added the the following Raspbian packages to my Raspbian deployment.
     sudo apt-get install libffi-dev
 ```
 
+
+Download git repo of [ecl](http://ecls.sourceforge.net/download.html)
+
+```shell
+    git clone git://git.code.sf.net/p/ecls/ecl ecl
+    cd ecl # we'll be compiling in this directory.
+```
+
+
 Run configure with the following options
 
 ```shell
-    cd ecl # if you're not already in the ecl source directory
-    --enable-unicode=yes "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
+    ./configure --enable-unicode=yes "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
-I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is
-dated as 2012. I tried to compile without it but ran int to problems when it came to the GC modules being compiled. 
+I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is dated as 2012. I tried to compile without it but ran int to problems when it came to the GC modules being compiled.
 
-Install on Raspbian system (takes a long time to compile)
+Next it was the usual Unix build and install sequence (takes a long time to compile).
 
 ```shell
     make; sudo make install
