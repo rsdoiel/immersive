@@ -40,7 +40,7 @@ I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2
 Using the ecl gc system was the way to go.
 
 Next it was the usual Unix build and install sequence (takes a while time to compile on Raspberry Pi Model B,
-aprox. ???).
+aprox. 90 minutes).
 
 
 ```shell
@@ -49,6 +49,14 @@ aprox. ???).
 
 Confirm ecl's install location, run some toy lisp code then changed my shell to use ecl (e.g. 
 chsh rsdoiel /usr/local/bin/ecl).
+
+Next add ECL to the list of shells available on the system. This is done by modifying
+/etc/shells. Since I installed ecl in /usr/local on my machine I added the line "/usr/local/bin/ecl" to
+/etc/shells.
+
+Log into the account you're planning to use to run your Lisps from.  Then use the Unix command _chsh_
+to switch your shell to ecl. Log out then log in again and you should find yourself at the ecl prompt.
+
 
 
 
