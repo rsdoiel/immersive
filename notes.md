@@ -13,6 +13,7 @@ was required to install the old version 11 debian package.
 ```shell
     sudo apt-get install libgmp-dev
     sudo apt-get install libgmp3-dev
+    sudo apt-get install libatomic-ops-dev
     sudo apt-get install libncurses5-dev
     sudo apt-get install libreadline-dev
     sudo apt-get install libgc-dev
