@@ -73,15 +73,15 @@ This requires using _git_ and I put it into my lisp account's home directory.
    ;; pasting in user-lisp.lisp from the git repo.
    (ed "user-shell.lisp")
    (load "user-shell.lisp")
-   ;; Install ASDF v3
-   (shell "git clone git://common-lisp.net/projects/asdf/asdf.git")
-   (shell "mkdir -p .config/common-lisp/source-registry.conf.d")
-   ;; Add the following lines to asdf.conf
-   ;;
-   ;;      # ../asdf.conf
-   ;;      ;;additional directory for ASDF to search (no recursion):
-   ;;      (:directory "/LISP/ASDF/")
-   (ed ".config/common-lisp/source-registry.conf.d/asdf.conf")
+   ;;; Install ASDF v3 (FIXME: we'll use ecl's included ASDF for now)
+   ;(shell "git clone git://common-lisp.net/projects/asdf/asdf.git")
+   ;(shell "mkdir -p .config/common-lisp/source-registry.conf.d")
+   ;;; Add the following lines to asdf.conf
+   ;;;
+   ;;;      # ../asdf.conf
+   ;;;      ;;additional directory for ASDF to search (no recursion):
+   ;;;      (:directory "/ASDF/")
+   ;(ed ".config/common-lisp/source-registry.conf.d/asdf.conf")
    
    ;; Now get Quicklisp and install it locally to the account
    (shell "curl -O http://beta.quicklisp.org/quicklisp.lisp")
