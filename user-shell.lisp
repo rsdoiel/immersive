@@ -12,3 +12,8 @@ User sub-shell is spawned. SHELL_CMD be string or symbol, 256 characters max."
 ;;
 (defun bash ()
 	(shell "bash"))
+
+;;
+;; Enabled readline
+;;
+
