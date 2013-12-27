@@ -36,7 +36,12 @@ Run configure with the following options
 
 I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is dated as 2012. I tried to compile without it but ran int to problems.
 
-Next it was the usual Unix build and install sequence (takes a long time to compile).
+
+Using the ecl gc system was the way to go.
+
+Next it was the usual Unix build and install sequence (takes a while time to compile on Raspberry Pi Model B,
+aprox. 30 minutes).
+
 
 ```shell
     make; sudo make install
@@ -47,3 +52,7 @@ chsh rsdoiel /usr/local/bin/ecl).
 
 
 
+## Misc 
+
+Early on in my compilation trials I had the debian package libgc-dev installed. This turned out to cause problems.
+I removed the pkg (sudo apt-get remove libgc-dev libgc1c2 and that solved that problem.)
