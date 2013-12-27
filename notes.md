@@ -34,7 +34,7 @@ Run configure with the following options
     ./configure --enable-unicode=yes "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
 ```
 
-I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is dated as 2012. I tried to compile without it but ran int to problems when it came to the GC modules being compiled.
+I found a CLAGS line suggested at [Holger's Blog](http://blog.hdurer.net/posts/2012/07/23_building-my-own-ecl-for-and-on-the-raspberry-pi.html). Article is dated as 2012. I tried to compile without it but ran int to problems.
 
 Next it was the usual Unix build and install sequence (takes a long time to compile).
 
