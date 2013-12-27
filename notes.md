@@ -5,7 +5,7 @@ If you are OK with version 11 of ecl then you can do
 ```
 
 If you want to compile the current (i.e. 13.5.1 at time of writing this document) you'll
-need to follow my notes below.
+to do a little bit more.
 
 I added the the following Raspbian packages to my Raspbian deployment based on looking at what
 was required to install the old version 11 debian package.
