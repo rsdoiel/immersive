@@ -55,7 +55,7 @@ Next add ECL to the list of shells available on the system. This is done by modi
 /etc/shells. You can then use the _chsh_ command to set your shell to ecl.
  
 
-# After getting your compiled
+# After compile
 
 Log into the account you're planning to use to run your Lisps from.  Then use the Unix command _chsh_
 to switch your shell to ecl. Log out then log in again and you should find yourself at the ecl prompt.
