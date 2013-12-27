@@ -52,12 +52,45 @@ chsh rsdoiel /usr/local/bin/ecl).
 
 Next add ECL to the list of shells available on the system. This is done by modifying
 /etc/shells. Since I installed ecl in /usr/local on my machine I added the line "/usr/local/bin/ecl" to
-/etc/shells.
+/etc/shells. You can then use the _chsh_ command to set your shell to ecl.
+ 
+
+# After getting your compiled
 
 Log into the account you're planning to use to run your Lisps from.  Then use the Unix command _chsh_
 to switch your shell to ecl. Log out then log in again and you should find yourself at the ecl prompt.
 
+Using the "ed" command edit your init file (e.g. .eclrc file for _ecl_ lisp) to load "user-shell.lisp".
+This adds two commands - (bash) and (shell).  We can use these for the next steps of bootstraping things.
 
+## Adding ASDF v3 and Quicklisp
+
+Follow the instructions [asdf](http://common-lisp.net/project/asdf/#downloads) website to install ASDF version 3.
+This requires using _git_ and I put it into my lisp account's home directory.
+
+```shell
+   ;; You can create user-shell.lisp by using the (ed "user-lisp.lisp") command and
+   ;; pasting in user-lisp.lisp from the git repo.
+   (ed "user-shell.lisp")
+   (load "user-shell.lisp")
+   ;; Install ASDF v3
+   (shell "git clone git://common-lisp.net/projects/asdf/asdf.git")
+   (shell "mkdir -p .config/common-lisp/source-registry.conf.d")
+   ;; Add the following lines to asdf.conf
+   ;;
+   ;;      # ../asdf.conf
+   ;;      ;;additional directory for ASDF to search (no recursion):
+   ;;      (:directory "/LISP/ASDF/")
+   (ed ".config/common-lisp/source-registry.conf.d/asdf.conf")
+   
+   ;; Now get Quicklisp and install it locally to the account
+   (shell "curl -O http://beta.quicklisp.org/quicklisp.lisp")
+   ;; Now load quicklisp.lisp to go through install steps
+   (load "quicklisp.lisp")
+   ;; Follow the quicklisp instructions from here.
+```
+
+Quicklisp instructions at [http://www.quicklisp.org/beta/](http://www.quicklisp.org/beta/).
 
 
 ## Misc 
