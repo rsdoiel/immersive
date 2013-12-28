@@ -3,7 +3,7 @@
 ## Step 1
 
 Here is a script I used to setup my dev environment on a fresh Raspbbery Pi. You can
-run it from your user account. I recommend making sure the *Pi* or *root* accounts remain
+run it from your user account. I recommend making sure the *pi* or *root* accounts remain
 available incease you break something while doing development.
 
 The following will only need to be done once to get the right Raspbian Packages installed.
@@ -12,6 +12,7 @@ The following will only need to be done once to get the right Raspbian Packages 
     # Basic tools
     sudo apt-get update
     sudo apt-get install git-core curl build-essential openssl libssl-dev
+    apt-get install autoconf # used when we get to adding support for stumpwm
     # Helpful libraries
     sudo apt-get install libgmp-dev
     sudo apt-get install libgmp3-dev
