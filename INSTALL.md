@@ -65,9 +65,9 @@ Now fetch and build _ecl_.
 ```
 
 
-It takes about ninety minutes to compile on my Raspberry Pi Model B with nothing else
-running.  Thirty minutes just to compile the *C* code and the rest for compiling
-the *Lisp*.
+It takes about ninety minutes to compile on my Raspberry Pi Model B without the clx and X
+options.  Thirty minutes just to compile the *C* code and the rest for compiling
+the *Lisp*. Adding the clx and X options made it take about twice that.
 
 We can now execute _ecl_ from the command line at @$HOME/bin/ecl@ and 
 get a working Lisp REPL.
