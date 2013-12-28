@@ -1,3 +1,29 @@
+cl-immersive
+============
+
+The goal is to get an immersive Lisp environment up and running on a Raspberry Pi Model B.
+This would start out with a simple replacement shell based on _ecl_'s REPL.  Eventually
+it would be cool to a graphical UI either based off zen or CLXS as well as stumpwm. Another
+approach would be to create the GUI in a web browser using websockets and state sharing between
+the browser (e.g. a Chromebook) and a Lisp server (e.g. the Raspberry Pi). That seems a long
+way off right now so the first step is setting things up so I can hack happily in Lisp.
+
+My choices
+
++ ecl for REPL
++ vi for editor (EMACS/SLIME seems like overkill on a Raspberry Pi)
++ Some sort of readline support
++ ASDF 3 and Quicklisp for packaging
++ Basic mapping of common Unix commands
+    - pwd
+    - cd
+    - mkdir
+    - git
+    - ls
+    - bash
+    - shell
+
+
 # Dev setup
 
 ## Step 1
@@ -33,14 +59,18 @@ Now fetch and build _ecl_.
       --with-clx=yes \
       --with-asdf=yes \
       --with-x=yes \
-      "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"  
+      "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
+  make
+  make install
 ```
 
 
-It takes about ninety minutes to compile on my Raspberry Pi Model B.  Thirty
-minitures to compile the *C* code and the rest for compiling the *Lisp* itself.
+It takes about ninety minutes to compile on my Raspberry Pi Model B with nothing else
+running.  Thirty minutes just to compile the *C* code and the rest for compiling
+the *Lisp*.
 
-We can now execute _ecl_ from the command line and get a working Lisp REPL.
+We can now execute _ecl_ from the command line at @$HOME/bin/ecl@ and 
+get a working Lisp REPL.
 
 ## Step 2
 
@@ -48,4 +78,24 @@ Assembling a rich Lisp environment requires adding ASDF and Quicklisp. _ecl_ shi
 with ASDF v2. ASDF v3 is now out so we want to upgrade to that. Finally we also
 want install Quicklisp to have a modern way to fetch and integrate remote packages.
 
+Getting ASDF v3 is pretty straight forward.  I ignore that ASDF 2.x comes with ecl and just
+clone a copy of ASDF repo in my home directory. Then run make to create the *build/asdf.lisp*
+file need to load it.
 
+```shell
+    cd # make sure I'm in my $HOME directory
+    git clone git://common-lisp.net/projects/asdf/asdf.git
+    cd asdf
+    make
+```
+
+Now I can use it via my Lisp init (e.g. *.eclrc*)
+
+```lisp
+    ;; Load ASDF v3
+    (load (concatenate 'string (ext:getenv "HOME") "/asdf/build/asdf.lisp"))
+    
+    ;; Load cl-immersive
+    (load (concatenate 'string (ext:getenv "HOME") "/cl-immersive.lisp"))
+    
+```
