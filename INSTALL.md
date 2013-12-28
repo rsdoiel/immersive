@@ -12,7 +12,7 @@ The following will only need to be done once to get the right Raspbian Packages 
     # Basic tools
     sudo apt-get update
     sudo apt-get install git-core curl build-essential openssl libssl-dev
-    apt-get install autoconf # used when we get to adding support for stumpwm
+    sudo apt-get install autoconf # used when we get to adding support for stumpwm
     # Helpful libraries
     sudo apt-get install libgmp-dev
     sudo apt-get install libgmp3-dev
