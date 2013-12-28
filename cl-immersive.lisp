@@ -34,12 +34,18 @@ User sub-shell is spawned. SHELL_CMD be string or symbol, 256 characters max."
 ;;
 ;; make a directory
 ;;
-;(defun mkdir (pathname (&optional (p nil)))
-;  "Args: pathname [p]
-;  MKDIR creates a new directory if P is true then it will create any missing
-;  directories listed in the path."
-;  (princ (concat "DEBUG pathname: " pathname)))
+(defun mkdir (pathname &optional (p nil))
+  "Args: pathname [p]
+  MKDIR creates a new directory if P is true then it will create any missing
+  directories listed in the path."
+  (princ (concatenate 'string "DEBUG pathname: " pathname)))
 
 
-
+;;
+;; exit the shell, alias for (quit 0)
+;;
+(defun exit (&optional (exit_code 0))
+  "Args: (&optional exit_code)
+  Exit the ecl shell"
+  (quit exit_code))
 
