@@ -1,4 +1,3 @@
-
 # Dev setup
 
 ## Step 1
@@ -30,8 +29,12 @@ Now fetch and build _ecl_.
   git clone git://git.code.sf.net/p/ecls/ecl
   cd ecl # change to the ecl directory cloned in $HOME
   ./configure --prefix=$HOME --enable-unicode=yes \
-       "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"  
+      --with-clx=yes \
+      --with-asdf=yes \
+      --with-x=yes \
+      "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"  
 ```
+
 
 It takes about ninety minutes to compile on my Raspberry Pi Model B.  Thirty
 minitures to compile the *C* code and the rest for compiling the *Lisp* itself.
