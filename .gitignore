@@ -1,0 +1,15 @@
+.?*
+ecl
+asdf
+quicklisp
+quicklisp.lisp
+bin
+etc
+include
+share
+lib
+Sandbox
+*.fas
+*.gz
+*.desktop
+ecl-readline*

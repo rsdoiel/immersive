@@ -1,0 +1,11 @@
+;;
+;; Short cut to load cl-immersive
+;;
+(defun immersive ()
+  (progn
+    (load "cl-immersive")
+    (cl-immersive-setup)))
+
+(format t "~S~C~C"
+	"To load cl-immersive enter (immersive)"
+	#\return #\NewLine)

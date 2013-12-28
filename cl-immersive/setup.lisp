@@ -1,58 +1,19 @@
 ;;
-;; Define a Clisp like Shell command.
+;; Scan this path and load the lisp or fas file we find.
 ;;
-(defun shell (&optional (shell_cmd "$SHELL"))
-"Args: (&optional shell_cmd)
-SHELL calls the EXT:SYSTEM function. Executes SHELL_CMD if given, otherwise
-User sub-shell is spawned. SHELL_CMD be string or symbol, 256 characters max."
-   (ext:system shell_cmd))
+(defun cl-immersive-pathname-to-string (filename-as-pathname)
+  (let ((fname-string nil))
+    (progn
+      (setq fname-string (format nil "~S" filename-as-pathname))
+      (subseq fname-string 3 (- (length fname-string) 6)))))
 
-;;
-;; Quick shortcut to escape to bash.
-;;
-(defun bash ()
-  (shell "bash"))
+(defun cl-immersive-smart-load (filename-as-pathname)
+  (let ((fname-string (cl-immersive-pathname-to-string filename-as-pathname)))
+      (load fname-string)))
 
-;;
-;; Change working directory
-;;
-(defun cd (&optional (pathname (si:getenv "HOME")))
-  "Args: (%optional pathname)
-  CD calls ext:chdir to change the working directory. CD without args should
-  change the directory back to your $HOME location."
-  (progn
-    (ext:chdir pathname)
-    (ext:getcwd)))
-
-
-;;
-;; Get working directory
-;;
-(defun pwd ()
-  (ext:getcwd))
-
-;;
-;; make a directory
-;;
-;(defun mkdir (pathname &optional (p nil))
-;  "Args: pathname [p]
-;  MKDIR creates a new directory if P is true then it will create any missing
-;  directories listed in the path."
-;  (princ (concatenate 'string "DEBUG pathname: " pathname)))
-
-;;
-;; ls - wrap the Unix ls command
-;;
-(defun ls (&optionall (:filter "*.*"))
-  "Args: filter provides for the path regex you'd use with ls.
-  Other options to be added later"
-  (princ (shell (concatenate 'string "ls -la " :filter))))
-
-;;
-;; exit the shell, alias for (quit 0)
-;;
-(defun exit (&optional (exit_code 0))
-  "Args: (&optional exit_code)
-  Exit the ecl shell"
-  (quit exit_code))
+; Scan the directory and get a list of filenames
+(defun cl-immersive-setup ()
+  ; With list of filenames load, trim .lisp and them
+  (dolist (filename-as-pathname (directory (concatenate 'string (ext:getenv "HOME") "/cl-immersive/*.lisp")))
+    (cl-immersive-smart-load filename-as-pathname)))
 
