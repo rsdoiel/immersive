@@ -58,7 +58,7 @@
   Returns results of loadnig the list of files."
   (let ((fname-as-string nil))
     ; Now process all the parts, make a list of files and compile or load them
-    (dolist (filename-as-pathname (directory (concatenate 'string (ext:getenv "HOME" "/cl-immersive/*.lisp"))))
+    (dolist (filename-as-pathname (directory (concatenate 'string (ext:getenv "HOME") "/cl-immersive/*.lisp")))
       (setq fname-as-string (cl-immersive-pathname-to-string filename-as-pathname ".lisp"))
       ;FIXME: don't bother loading with setup.lisp
       (format t "DEBUG filename-as-string ~S~%" fname-as-string)

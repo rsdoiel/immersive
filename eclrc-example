@@ -8,7 +8,10 @@
     (or (equal intention "compile") (progn
 				      (compile-file "cl-immersive/setup.lisp")
 				      (load "cl-immersive/setup")))
-    (cl-immersive intention)))
+    (cl-immersive-setup intention)))
+
+;; Load ASDF v3
+;(load (concatenate 'string (ext:getenv "HOME") "/asdf/build/asdf"))
 
 (format t "~S~C~C"
 	"To load cl-immersive enter (immersive)"
