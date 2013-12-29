@@ -1,10 +1,14 @@
 ;;
 ;; Short cut to load cl-immersive
 ;;
-(defun immersive ()
+(defun immersive (&optional (intention "load"))
   (progn
-    (load "cl-immersive")
-    (cl-immersive-setup)))
+    (or (equal intention "load") (load "cl-immersive/setup"))
+    (or (equal intention "lisp") (load "cl-immersive/setup.lisp"))
+    (or (equal intention "compile") (progn
+				      (compile-file "cl-immersive/setup.lisp")
+				      (load "cl-immersive/setup")))
+    (cl-immersive intention)))
 
 (format t "~S~C~C"
 	"To load cl-immersive enter (immersive)"
