@@ -36,22 +36,22 @@
   "Args: fname-string, intention
 
     + fname-string would be a string version of a pathname *without a filename extention*.
-    + intention is a string of either "compile", "lisp" or "load".
+    + intention is a string of either *compile*, *lisp* or *load*.
 
   Returns the results of (load ...)"
     (progn
-      (or (equal intention "compile") (compile-file fname-string))
-      (if (equal intention "lisp")
-	(load (concatenate 'string fname-string ".lisp"))
-	;; defautl to load either .fas or .lisp as available
-	(load fname-string))))
+      (if (string= intention "compile")
+	(compile-file (concatenate 'string fname-string ".lisp")))
+      (if (string= intention "lisp")
+	  (load (concatenate 'string fname-string ".lisp"))
+	  (load fname-string))))
 
 ;;
 ;; Scan this cl-immersive folder and load the lisp or fas files we find.
 ;; If requested compile them first.
 ;;
-(defun cl-immersive-setup (&optional (action "load"))
-  "Args: action is a string that is either load, lisp, compile. The default is load.
+(defun cl-immersive-setup (&optional (intention "load"))
+  "Args: intention is a string that is either load, lisp, compile. The default is load.
   	load - will load either .fas or if not found the .lisp file
   	lisp - will explicitly load the .lisp files only
   	compile - will compile the lisp files and then load the .fas rendered.
@@ -60,7 +60,7 @@
     ; Now process all the parts, make a list of files and compile or load them
     (dolist (filename-as-pathname (directory (concatenate 'string (ext:getenv "HOME") "/cl-immersive/*.lisp")))
       (setq fname-as-string (cl-immersive-pathname-to-string filename-as-pathname ".lisp"))
-      ;FIXME: don't bother loading with setup.lisp
-      (format t "DEBUG filename-as-string ~S~%" fname-as-string)
-      (cl-immersive-smart-load fname-as-string action))))
+      (if (equal (search "/setup" fname-as-string) ()) 
+	(cl-immersive-smart-load fname-as-string intention)))))
+
 
