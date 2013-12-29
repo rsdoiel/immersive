@@ -13,7 +13,9 @@
     ;FIXME: turn a symbol into a string for the 'action' element.
     (setq cmd (string-trim " " (concatenate 'string "git " action " " arg1 " " arg2 " " arg3 " " arg4 " " arg5)))
     (princ cmd)
-    (ext:system cmd)
+    (if (> (ext:system cmd) 0)
+      ()
+      t) 
     ))
 
 
