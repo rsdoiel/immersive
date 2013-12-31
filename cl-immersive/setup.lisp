@@ -12,7 +12,8 @@
 ;; Convert a pathname type to a string type (optionally minus the filename extention),
 ;; #P and the quotes.
 (defun cl-immersive-pathname-to-string (filename-as-pathname &optional (extname nil))
-  "Args: filename-as-pathname, extname (defaults to nil)
+  "Converts a pathname to a string with or without the filename's file extension.
+  Args: filename-as-pathname, extname (defaults to nil)
      
     + filename-as-pathname would be the type returned for (directory ...)
     + extname would be a string such as _.lisp_ including the leading period or nil

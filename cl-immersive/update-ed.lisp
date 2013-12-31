@@ -4,7 +4,7 @@
 
 ;; set a default value for *update-ed-filename* without overwriting it if
 ;; already defined.
-(defparameter *update-ed* "untitled.lisp")
+(defvar *update-ed* "untitled.lisp")
 
 (defun update-ed (&optional (filename nil))
   "update-ed - edit then load a filename.

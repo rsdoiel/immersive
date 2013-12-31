@@ -2,9 +2,13 @@
 ;; Change working directory
 ;;
 (defun cd (&optional (pathname (si:getenv "HOME")))
-  "Args: (%optional pathname)
-  CD calls ext:chdir to change the working directory. CD without args should
-  change the directory back to your $HOME location."
+  "cd is a wrapper of the Unix change directory command. Without parameters
+  it will change the working directory to the value of $HOME.
+
+  Args: pathname - is either a string (for explicit Unix path) or symbol 
+  (converted to lowercase and applied as a Unix path).
+  Side effects: Changes the working directory.
+  Returns: The new working directory location as a pathname."
   (progn
     (if (eq (type-of pathname) 'SYMBOL)
       (progn

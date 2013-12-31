@@ -1,18 +1,7 @@
 ;;
 ;; Short cut to load cl-immersive
 ;;
-(defun immersive (&optional (intention "load"))
-  (progn
-    (if (string= intention "load")
-      (load "cl-immersive/setup"))
-    (if (string= intention "lisp")
-      (load "cl-immersive/setup.lisp"))
-    (if (string= intention "compile")
-      (progn
-	(compile-file "cl-immersive/setup.lisp")
-	(load "cl-immersive/setup")))
-    (cl-immersive-setup intention)))
-
+(load "cl-immersive/immersive.lisp")
 (progn
 	(fresh-line)
 	(princ #\newline)
