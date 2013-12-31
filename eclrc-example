@@ -1,7 +1,7 @@
 ;;
 ;; Short cut to load cl-immersive
 ;;
-(load "cl-immersive/immersive.lisp")
+(load "cl-immersive/immersive")
 (progn
 	(fresh-line)
 	(princ #\newline)
