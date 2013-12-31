@@ -9,6 +9,7 @@ include
 share
 lib
 Sandbox
+sandbox
 *.fas
 *.gz
 *.desktop

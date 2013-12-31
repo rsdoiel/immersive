@@ -1,7 +1,7 @@
 ;;
 ;; Change working directory
 ;;
-(defun cd (&optional (pathname (si:getenv "HOME")))
+(defun cd (&optional (pathname (ext:getenv "HOME")))
   "cd is a wrapper of the Unix change directory command. Without parameters
   it will change the working directory to the value of $HOME.
 
@@ -10,14 +10,8 @@
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
   (progn
-    (if (eq (type-of pathname) 'SYMBOL)
-      (progn
-	(print "turning symbol into string")
-	(setq pathname (symbol-name pathname))
-	(print pathname)
-	(print (type-of pathname))
-	(print "DEBUG now to find the right case..."))
-      (progn
-	(ext:chdir pathname)
-	(ext:getcwd)))))
+    (if (eq (type-of pathname) 'SYMBOL) 
+      (setq pathname (string-downcase (symbol-name pathname))))
+    (ext:chdir pathname)
+    (ext:getcwd)))
 
