@@ -12,9 +12,11 @@
   Side effects: filename if not nil will update update the value of *update-ed*.
   Returns: the results of load."
   (progn
-      (if filename
+    (if (eq (type-of filename) 'SYMBOL)
+      (setq filename (string-downcase (symbol-name filename))))
+    (if filename
 	(setq *update-ed* filename))
-      (format t "editting ~S" *update-ed*)
-      (ed *update-ed*)
-      (load *update-ed*)))
+    (format t "editting ~S" *update-ed*)
+    (ed *update-ed*)
+    (load *update-ed*)))
 
