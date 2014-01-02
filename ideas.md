@@ -30,6 +30,17 @@ and user management, etc. In principle these could eventually
 be replace but why start with them?  Why not use them until
 something better is implemented?
 
+## System return codes
+
+In Unix if a program successfully executes returns an error
+code of 0, it is fails the errors status is 1 or greater.
+In a Lisp environment it would make more sense to return
+T on success of NIl on failure for a simple return value.
+Another option would be return a list for the status.
+To start with our system will use T for success and
+NIL for failure. A global variable could contain
+a list of failures with each item including information
+like pid, error status code, message.
 
 
 
