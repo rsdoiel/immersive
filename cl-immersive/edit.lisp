@@ -8,18 +8,12 @@
 ;; already defined.
 (defvar *update-ed* "untitled.lisp")
 
-(defun symbol-to-lowercase-string (s)
-  (progn
-    (if (eq (type-of s) 'SYMBOL)
-      (setq s (string-downcase (symbol-name s))))
-    s))
-
 (defun edit (filename)
   "edit - wrap the Lisp ED function but default to downcase filename
   when filenames are symbols.
   Args: filename
   Returns: value of Lisp ED function."
-  (ed (symbol-to-lowercase-string filename)))
+  (ed (symbol-name-to-lowercase-string filename))
 
 (defun update-ed (&optional (filename nil))
   "update-ed - edit then load a filename.
@@ -28,7 +22,7 @@
   Returns: the results of load."
   (progn
     (if filename
-      (setq *update-ed* (symbol-to-lowercase-string filename)))
+      (setq *update-ed* (symbol-name-to-lowercase-string filename)))
     (ed *update-ed*)
     (load *update-ed*)))
 

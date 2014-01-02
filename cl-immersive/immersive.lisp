@@ -31,3 +31,24 @@
 	(compile-file target-lisp)
 	(load target)))
     (cl-immersive-setup intention)))
+
+;;;
+;;; Common functions used in immersive Lisp
+;;;
+
+;;
+;; symbol-name-to-lowercase-string - converts a symbol name into a lowercase
+;; string. This makes it easy to override the default Lisp symbol to string
+;; conversion to uppercase.
+;;
+(defun symbol-name-to-lowercase-string (symbol-or-string)
+  "Converts a symbol name to a lower case string or leaves it alone
+  if it already is a string.
+  
+  Args: symbol-or-string - the symbol or string you wish to process.
+  Returns: a symbol converted to a lowercase string or leaves the string alone."
+  (if (eq (type-of symbol-or-string) 'SYMBOL)
+    (setq symbol-or-string 
+	  (string-downcase (symbol-name symbol-or-string))))
+  symbol-or-string)
+

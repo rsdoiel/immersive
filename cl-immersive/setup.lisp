@@ -8,6 +8,7 @@
 ;;; build application and explore your Raspberry Pi.
 ;;;
 
+;FIXME: Should this file be named init.lisp?
 
 ;; Convert a pathname type to a string type (optionally minus the filename extention),
 ;; #P and the quotes.
@@ -22,7 +23,8 @@
    Returns a string version of the pathname."
   (let ((fname-string nil))
     (progn
-      (setq fname-string (format nil "~S" filename-as-pathname))
+      (setq fname-string (format nil "~S" 
+				 (symbol-name-to-lowercase-string filename-as-pathname)))
       (if extname
 	(subseq fname-string 3 (- (length fname-string) (1+ (length extname))))
 	(subseq fname-string 3 (1- (length fname-string)))))))
@@ -42,10 +44,12 @@
   Returns the results of (load ...)"
     (progn
       (if (string= intention "compile")
-	(compile-file (concatenate 'string fname-string ".lisp")))
+	(compile-file (concatenate 'string 
+				   (symbol-name-to-lowercase-string fname-string) ".lisp")))
       (if (string= intention "lisp")
-	  (load (concatenate 'string fname-string ".lisp"))
-	  (load fname-string))))
+	  (load (concatenate 'string 
+			     (symbol-name-to-lowercase-string fname-string) ".lisp"))
+	  (load (symbol-name-to-lowercase-string fname-string)))))
 
 ;;
 ;; Scan this cl-immersive folder and load the lisp or fas files we find.

@@ -15,11 +15,12 @@
 
   Returns: The new working directory location as a pathname."
   (progn
-    (if (eq (type-of pathname) 'SYMBOL) 
-      (setq pathname (string-downcase (symbol-name pathname))))
     (if parent
-      (shell (concatenate 'string "mkdir -p " pathname))
-      (shell (concatenate 'string "mkdir " pathname)))
-    (shell (concatenate 'string "ls -ld " pathname))))
+      (shell (concatenate 'string "mkdir -p "
+			  (symbol-name-to-lowercase-string pathname)))
+      (shell (concatenate 'string "mkdir "
+			  (symbol-name-to-lowercase-string pathname)))
+      (shell (concatenate 'string "ls -ld " 
+			  (symbol-name-to-lowercase-string pathname))))))
 
 
