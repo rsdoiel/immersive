@@ -13,7 +13,7 @@
   when filenames are symbols.
   Args: filename
   Returns: value of Lisp ED function."
-  (ed (symbol-name-to-lowercase-string filename))
+  (ed (symbol-name-to-lowercase-string filename)))
 
 (defun update-ed (&optional (filename nil))
   "update-ed - edit then load a filename.

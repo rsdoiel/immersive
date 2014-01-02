@@ -9,6 +9,10 @@
 ;;;;
 
 
+;;;
+;;; Common functions used in immersive Lisp
+;;;
+
 ;;
 ;; symbol-name-to-lowercase-string - converts a symbol name into a lowercase
 ;; string. This makes it easy to override the default Lisp symbol to string
@@ -80,7 +84,7 @@
     ; Now process all the parts, make a list of files and compile or load them
     (dolist (filename-as-pathname (directory (concatenate 'string (ext:getenv "HOME") "/cl-immersive/*.lisp")))
       (setq fname-as-string (pathname-to-string filename-as-pathname ".lisp"))
-      (if (equal (search "/setup" fname-as-string) ()) 
+      (if (equal (search "/init" fname-as-string) ()) 
 	(smart-load fname-as-string intention)))))
 
 ;;;
@@ -106,7 +110,3 @@
 	(compile-file target-lisp)
 	(load target)))
     (immersive-init intention)))
-
-;;;
-;;; Common functions used in immersive Lisp
-;;;
