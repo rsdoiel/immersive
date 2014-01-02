@@ -79,8 +79,6 @@
 	      (directory (concatenate 
 			   'string (ext:getenv "HOME") "/cl-immersive/*.lisp")))
     (let ((fname (convert-symbol-or-pathname filename)))
-      (if (search "/immersive.lisp" fname)
-	(if (string= intention "compile")
-	  (compile-file fname)))
-      (smart-load fname intention))))
+      (if (not (search "/immersive.lisp" fname))
+	  (smart-load fname intention)))))
 
