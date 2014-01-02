@@ -16,7 +16,7 @@ implement in natively in Lisp.
 
 There are a number of excellent Open Source Lisp implementations out
 (e.g. CLISP, CMULisp, SBCL) but one stands out for supporting good
-integration with C/C++ programs. That one is [ECL](http://ecl.sourceforge.net).
+integration with C/C++ programs. That one is [ECL](http://ecls.sourceforge.net).
 It can easily be compiled on a Rasberry Pi, can be embedded in C programs
 as well as supporting Common Lisp independently. It also supports
 ASFD and Quicklisp for package management.
