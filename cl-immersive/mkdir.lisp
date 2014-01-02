@@ -11,16 +11,10 @@
   + parent if true will attempt to create the parent directories as requested by
     pathname
 
-  Side effects: Changes the working directory.
-
   Returns: The new working directory location as a pathname."
-  (progn
-    (if parent
-      (shell (concatenate 'string "mkdir -p "
-			  (symbol-name-to-lowercase-string pathname)))
-      (shell (concatenate 'string "mkdir "
-			  (symbol-name-to-lowercase-string pathname)))
-      (shell (concatenate 'string "ls -ld " 
-			  (symbol-name-to-lowercase-string pathname))))))
+  (let ((path (convert-symbol-or-pathname pathname)))
+    (eq 0 (if parent
+	    (shell (concatenate 'string "mkdir -p " path))
+	    (shell (concatenate 'string "mkdir " path))))))
 
 

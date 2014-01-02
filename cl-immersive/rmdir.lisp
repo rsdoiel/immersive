@@ -9,6 +9,7 @@
   + pathname is the path (relative or full) the directory you want to create.
 
   Side effects: Changes the working directory."
-  (shell (concatenate 'string "rmdir "
-		      (symbol-name-to-lowercase-string pathname))))
-
+  (eq 0 
+      (shell 
+	(concatenate 'string "rmdir " 
+		     (convert-symbol-or-pathname pathname)))))

@@ -10,28 +10,28 @@
 ;;
 (defun git-scm (action &optional (arg1 nil) (arg2 nil) (arg3 nil) (arg4 nil) (arg5 nil))
   (let ((cmd nil))
-    (setq action (symbol-name-to-lowercase-string action))
+    (setq action (convert-symbol-or-pathname action))
 
     ;;FIXME use variable lisp parameters instead of arg1, arg2, arg3, ...
     (if (not arg1)
       (setq arg1 " "))
-    (setq arg1 (symbol-name-to-lowercase-string arg1))
+    (setq arg1 (convert-symbol-or-pathname arg1))
 
     (if (not arg2)
       (setq arg2 " "))
-    (setq arg2 (symbol-name-to-lowercase-string arg2))
+    (setq arg2 (convert-symbol-or-pathname arg2))
 
     (if (not arg3)
       (setq arg3 " "))
-    (setq arg3 (symbol-name-to-lowercase-string arg3))
+    (setq arg3 (convert-symbol-or-pathname arg3))
 
     (if (not arg4)
       (setq arg4 " "))
-    (setq arg4 (symbol-name-to-lowercase-string arg4))
+    (setq arg4 (convert-symbol-or-pathname arg4))
 
     (if (not arg5)
       (setq arg5 " "))
-    (setq arg5 (symbol-name-to-lowercase-string arg5))
+    (setq arg5 (convert-symbol-or-pathname arg5))
 
 
     (setq cmd (string-trim " "
@@ -56,22 +56,27 @@
 ;; git-add - Add a file to the git repo.
 ;;
 (defun git-add (fname)
-  (git-scm "add" (system-name-to-lowercase-string fname)))
+  (git-scm "add" (convert-symbol-or-pathname fname)))
 
 ;;
 ;; git-commit - Commit the current state of development.
 ;;
 (defun git-commit (&optional (msg "snapshot"))
+  "Execute git commit -am MSG
+
+  Args: msg - a string message to include on the commit.
+  Returns status of commit"
   (git-scm "commit -am" 
-	   (concatenate 'string "\"" 
-			(symbol-name-to-lowercase-string msg) "\"")))
+	   (concatenate 'string "\"" msg "\"")))
 
 ;;
 ;; git-push - Push the current state to master
 ;;
 (defun git-push (&optional (source " ") (branch " "))
-  (git-scm "push" (symbol-name-to-lowercase-string source)
-	   (symbol-name-to-lowercase-string branch)))
+  "Execute a git push with optional source and branch references.
+  
+  Args: source - a string, branch - a string"
+  (git-scm "push" source branch))
 
 ;;
 ;; git-pull - Pull the current state from master
@@ -92,7 +97,9 @@
 ;; git-clone - clone a remote repo
 ;;
 (defun git-clone (repos-url) 
+  "Execute git clone for a git URL.
+
+  Args: repos-url as a string"
   (git-scm "clone " 
-	   (concatenate 'string "\""
-			(symbol-name-to-lowercase-string repos-url) "\"")))
+	   (concatenate 'string "\"" repos-url "\"")))
 

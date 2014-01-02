@@ -10,6 +10,6 @@
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
   (progn
-    (ext:chdir (symbol-name-to-lowercase-string pathname))
+    (ext:chdir (convert-symbol-or-pathname pathname))
     (ext:getcwd)))
 
