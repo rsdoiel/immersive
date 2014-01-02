@@ -7,8 +7,9 @@ repl.
 + wrap common Unix commands
 	- cd
 	- pwd
-	- ls
 	- mkdir
+	- rmdir
+	- ls
 	- cp
 	- mv
 	- rm
@@ -17,4 +18,6 @@ repl.
 + write a helpful "find" command rather than wrapping the Unix one
 	- looks at cl-fad package to see if it has what I need.
 + figure out how to create a sandbox sub-shell for development
++ wrap the git commands
++ wrap SSH/SCP
 
