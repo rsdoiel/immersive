@@ -85,12 +85,14 @@
   (git-scm "pull" source branch))
 
 ;;
-;; git-pull-origin-master - short cut to execute git pull origin master
+;; git-pull-origin-master - short cut to execute git pull origin 
+;; master
 ;;
 (defun git-pull-origin-master () (git-pull "origin" "master"))
 
 ;;
-;; git-push-orgin-master - shortgut to push to origin master
+;; git-push-orgin-master - shortcut to push to origin master
+;;
 (defun git-push-origin-master () (git-push "origin" "master"))
 
 ;;
@@ -103,3 +105,11 @@
   (git-scm "clone " 
 	   (concatenate 'string "\"" repos-url "\"")))
 
+;;
+;; git-mv - shutcut for: git mv OLDNAME NEWNAME
+;;
+(defun git-mv (old-name new-name)
+  (git-scm "mv " 
+	   (concatenate 'string "\"" old-name "\"")
+	   (concatenate 'string "\"" new-name "\"")))
+		   
