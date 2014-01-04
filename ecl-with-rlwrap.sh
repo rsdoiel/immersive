@@ -1,3 +1,4 @@
 #!/bin/bash
-export ECL_BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
-alias ecl="rlwrap -b \$ECL_BREAK_CHARS /home/atomicatypos/bin/ecl"
+export ECLS_BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
+ECLS=(which ecl)
+alias ecl="rlwrap -b \$ECLS_BREAK_CHARS $ECLS"
