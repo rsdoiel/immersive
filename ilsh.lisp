@@ -7,8 +7,8 @@
 ;;; Built in commands (these are native Common Lisp
 ;;; implementations of common Unix commands)
 ;;;
-(load "immersive.lisp")
-(immersive)
+;;(load "immersive.lisp")
+;;(immersive)
 
 ;;;
 ;;; repl - The repl needs to support several things
