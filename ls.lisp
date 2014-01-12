@@ -8,6 +8,6 @@
   (let ((path-type (if (string= (subseq folder 0 1) "/")
 		     ':absolute
 		     ':relative)))
-    (concatenate 'list (directory (make-pathname :directory `(,path-type ,folder :wild)))
+    (concatenate 'list (if (string= "*" type) (directory (make-pathname :directory `(,path-type ,folder :wild))))
 		 (directory (make-pathname :directory `(,path-type ,folder) :name name :type type)))))
 
