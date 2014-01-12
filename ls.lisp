@@ -1,13 +1,26 @@
 ;;
 ;; ls - wrap the Unix ls command
 ;;
-(defun ls (&optional (folder ".") (name "*") (type "*"))
+(defun ls (&optional (filter "./*.*"))
   "list the contents of a directory.
-  Args: folder [absolute or relative path], name [base name of file], type [filename extension, e.g. lisp]
-  Returns: A list of files and directories"
-  (let ((path-type (if (string= (subseq folder 0 1) "/")
+  Args: filter is a Unix path string can include wild cards.
+  Returns: A list of files and directories as pathnames"
+  (let ((path-type (if (string= (subseq filter 0 1) "/")
 		     ':absolute
-		     ':relative)))
-    (concatenate 'list (if (string= "*" type) (directory (make-pathname :directory `(,path-type ,folder :wild))))
-		 (directory (make-pathname :directory `(,path-type ,folder) :name name :type type)))))
+		     ':relative))
+        (base-path (pathname-directory (pathname filter)))
+        (base-name (pathname-name (pathname filter)))
+        (base-type (pathname-type (pathname filter))))
+    (if base-type
+      (directory (make-pathname :directory base-path :name base-name :type base-type))
+      (progn
+        (if (and (not base-path) (not base-type))
+          (setq base-path (pathname-directory
+                            (pathname (concatenate 'string filter "/")))))
+        (concatenate 'list
+                     (directory (make-pathname :directory 
+                                               (append base-path '(:wild))))
+                     (directory (make-pathname :directory base-path
+                                               :name "*" :type "*")))))))
+
 
