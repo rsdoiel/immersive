@@ -6,26 +6,26 @@
 ;;;
 ;;; pipe-line
 ;;;
-(defun pipe-line (input-text &rest operations) 
+(defun pipe-line (input &rest operations) 
   "Pipe line processes a text through sequencial list of functions
   taking the output text of the previous as the input of the next.
   
   Args: 
-     input-text - the text stream to process
+     input - the text stream to process
      operations - a list of functions to call and apply to input text
-  Returns a string, a list or nil"
+  Returns: a value list with first element a string, a list or nil"
   nil)
 
 ;;;
 ;;; pipe-clone
 ;;;
-(defun pipe-fork (input-text &rest operations)
-  "Splits a pipe line of data into parallel requests.
+(defun pipe-fork (input &rest operations)
+  "Splits a pipe line of data into multipe lists of operations.
   
   Args:
-    input text - the text stream to split
+    input - the text stream to split
     operations - a list of function names to sent the text through
-  Returns a string, a list or nil"
+  Returns: a value list with first element a string, a list or nil"
   nil)
 
 ;;;
@@ -36,6 +36,6 @@
   Args: 
     inputs - a list of texts
     operation - a function to process the concatentated inputs
-  Returns: a string, a list or nil"
+  Returns: a value list with first element a string, a list or nil"
   nil)
 
