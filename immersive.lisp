@@ -71,9 +71,9 @@
   	lisp - will explicitly load the .lisp files only
   	compile - will compile the lisp files and then load the .fas rendered.
 
-  Side effects: Adds a various symbols and functions to the global space.
+  Side effects: Adds a various symbols and functions to the user space.
 
-  Returns results of loadnig the list of files."
+  Returns results of loading the list of files."
   ; Now process all the parts, make a list of files and compile or load them
   (dolist (filename 
 	      (directory (concatenate 

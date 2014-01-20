@@ -24,3 +24,16 @@
                                                :name "*" :type "*")))))))
 
 
+;;
+;; Need something like stat but since the "disc" is the web
+;; and other immersive lisp pi deployments we need additional
+;; info. Meta data should probably be something like
+;; + owner
+;; + group
+;; + permissions
+;; + hostname
+;; + pathname/filename
+;; + extension
+;; + mime-type
+;; + protocol to access it (e.g. ssh://, sftp://, https://, git://)
+;;

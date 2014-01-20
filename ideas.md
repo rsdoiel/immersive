@@ -37,31 +37,29 @@ can be left for another day.
 
 ### Existing Lispy parts
 
-+ ECL's repl with a few additions to wrap Unix commands provides the start of our
-Lisp experience.
-+ Stumpwm is a X window manager rewritten in Lisp and configured in Lisp it will
-be our first GUI app
++ ECL's repl with a few additions to wrap Unix commands provides the start of our Lisp experience.
++ A boot to gecko like approach should be taken for the GUI layer with the addition of a Lisp base layer
 
 ### Unix systems we'll wrap
 
 + Basic Unix commands
-	- cd
-	- pwd
-	- mkdir
-	- rmdir
-	- cp
-	- mv
-	- rm
-	- ls
-	- vi
-	- git
-	- curl
+  - cd
+  - pwd
+  - mkdir
+  - rmdir
+  - cp
+  - mv
+  - rm
+  - ls
+  - vi
+  - git
+  - curl
 + Unix C based tool chain via ECLS' approach
 + Leverage Existing Services via Unix init system
-	- OpenSSH
-	- NFS
-	- Samba
-	- Nginx
+  - OpenSSH
+  - NFS
+  - Samba
+  - Nginx
 	
 #### Problems
 
@@ -95,9 +93,15 @@ I ran across this and was surprise to see someone articulate a hunch I had...
 
 From [lisposes](http://linuxfinances.info/info/lisposes.html) -
 
-	An interesting alternative would be to use Linux or one of the BSD OSes as a kernel, providing basic hardware support, and then for the init process to start up a Lisp program, which would ultimately mean that there wouldn't forcibly be any detectable Unix -like environment underneath.
+    An interesting alternative would be to use Linux or one of the BSD OSes as a kernel,
+    providing basic hardware support, and then for the init process to start up a Lisp
+    program, which would ultimately mean that there wouldn't forcibly be any detectable
+    Unix -like environment underneath.
 
-	That would provide the benefits of having the Linux/BSD folk develop hardware drivers, and yet leave you with a "completely Lisp" environment from the perspective of anything you'd see after the boot messages.
+    That would provide the benefits of having the Linux/BSD folk develop hardware drivers,
+    and yet leave you with a "completely Lisp" environment from the perspective of anything
+    you'd see after the boot messages.
+
 
 ## Random ideas from reading some Lisp Machine docs
 
@@ -114,3 +118,6 @@ From [lisposes](http://linuxfinances.info/info/lisposes.html) -
   - obvious could be a result of common practive (e.g. Unix layouts /etc, /home, /bin)
   - obvious could be well named (e.g. Mac's /Library, /System, /Documents, /Music, /Movies)
   - obvious should make sense in a Lisp repl
++ since this is a exploration is literate approaches useful? If so do I *knit* together something with markdown and Lip?
+
+
