@@ -103,4 +103,14 @@ From [lisposes](http://linuxfinances.info/info/lisposes.html) -
 
 + (defun login (username &optional (password nil)) (...)); Log into an account from outer most lisp shell
 
+## Random shell stuff
 
++ the shell should have auto-complete and syntax highlighting
++ the GUI should be a boot to gecko like engine where the web is part of the native environment
++ immersive should be a little lisp sandbox of the web
++ opening a "file" should include the ability to other web assets
++ file types should support "opening" things easily based on mime-type (E.g. "open URL" or "open -t URL")
++ A sensible obvious directory layout
+  - obvious could be a result of common practive (e.g. Unix layouts /etc, /home, /bin)
+  - obvious could be well named (e.g. Mac's /Library, /System, /Documents, /Music, /Movies)
+  - obvious should make sense in a Lisp repl

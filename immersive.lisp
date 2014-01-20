@@ -77,7 +77,7 @@
   ; Now process all the parts, make a list of files and compile or load them
   (dolist (filename 
 	      (directory (concatenate 
-			   'string (ext:getenv "HOME") "/immersive/*.lisp")))
+			   'string (ext:getenv "HOME") "/immersive/commands/*.lisp")))
     (let ((fname (convert-symbol-or-pathname filename)))
       (if (not (search "/immersive.lisp" fname))
 	  (smart-load fname intention)))))
