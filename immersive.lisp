@@ -58,6 +58,24 @@
       ))
 
 ;;
+;; immersive-getenv - get the Lisp's environment variable. This is Lisp dependant even in CL.
+;; this was taken from http://cl-cookbook.sourceforge.net/os.html
+;;
+(defun get-os-environment (name &optional default)
+  #+CMU
+  (let ((x (assoc name ext:*environment-list*
+		  :test #'string=)))
+    (if x (cdr x) default))
+  #-CMU
+  (or
+    #+Allegro (sys:getenv name)
+    #+CLISP (ext:getenv name)
+    #+ECL (si:getenv name)
+    #+SBCL (sb-unix::posix-getenv name)
+    #+LISPWORKS (lispworks:environment-variable name)
+    default))
+
+;;
 ;; Scan this immersive folder and load the lisp or fas files we find.
 ;; If requested compile them first.
 ;;
@@ -77,7 +95,7 @@
   ; Now process all the parts, make a list of files and compile or load them
   (dolist (filename 
 	      (directory (concatenate 
-			   'string (ext:getenv "HOME") "/immersive/commands/*.lisp")))
+			   'string (get-os-environment "HOME") "/immersive/commands/*.lisp")))
     (let ((fname (convert-symbol-or-pathname filename)))
       (if (not (search "/immersive.lisp" fname))
 	  (smart-load fname intention)))))
