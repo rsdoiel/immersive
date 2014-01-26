@@ -120,4 +120,14 @@ From [lisposes](http://linuxfinances.info/info/lisposes.html) -
   - obvious should make sense in a Lisp repl
 + since this is a exploration is literate approaches useful? If so do I *knit* together something with markdown and Lip?
 
+## Thoughts about environment architecture
+
+1. Be interesting to have build a literate system with all source code available for reading/modification
+2. git can be the glue for version control of the environment
+3. the "graphics system and display" should be a web browser 
+4. three levels of code
+    - OS level, C based (maybe build in Linux from Scratch? or a minimal BSD?)
+    - immersive base/CUI ecl plus immersive code (accessed via SSH)
+    - immersive GUI is Lisp based web service(s)
+    - persistance distributed disc (e.g. Dropbox, Skydrive, Amazon, Ori, arkOS-like)
 
