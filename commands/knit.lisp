@@ -5,7 +5,7 @@
 ;;;; tangle/cweb inspired by Donald Knuth's ideas.
 ;;;;
 
-(defun knit (input-filename &optional input-template "./" output-directory "./")
+(defun knit (input-filename &optional (input-template "./") (output-directory "./"))
     "Knit takes an Markdown file as input and generates the appropriate HTML document
     and source code (e.g. Lisp) files.
     
