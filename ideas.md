@@ -131,3 +131,36 @@ From [lisposes](http://linuxfinances.info/info/lisposes.html) -
     - immersive GUI is Lisp based web service(s)
     - persistance distributed disc (e.g. Dropbox, Skydrive, Amazon, Ori, arkOS-like)
 
+Advantates? I didn't need to invent a whole OS to determine is immersive is actually
+useful (I only write enough immersive to figure that out).  Why literate? Because it
+may make the system more understandable to myself and anyone who takes a fancy to it.
+Why web for graphics, like leveraging existing C based code using the web for display
+gives me a rich UI experience out of the box. It is easy to generate HTML and probably
+CSS from lisp (they are declarative). It maybe possible to create a CL compiler
+that renders to asm.js either via ECL->Exscriptem->asm.js or direct transformation of
+the Lisp AST.  Need to looking how ClojureScript does this. Clojure is nice but I like
+CL better for my purposes (e.g. exploring some old-school going software thinking
+and see how far you can take it given what we know now).
+
+## Knit
+
+mweave in JavaScript was my first unsophisticated poorman's literate tool based on
+Markdown as the "text describing code" vehicle.  It was limitted by requiring the
+text to be written in order. It was also limitted by my desire to play with a self
+hosting system (e.g. you extract blocks of text from README.md to generate a 
+bootstrap mweave tool that let you create a real mweave library). Given the inclinations
+of a Lisp environment I think I will write Knit in Lisp, compile to standalone binary
+via ECL's compiler and have it processing files from there. 
+
+Secondary idea of Knit, could you take an existing commented Lisp program an create
+a starting document for further literate development? If you could then I could bring
+in interesting external Lisp programs and code bases and merge them into a literate
+tree flagging them for eventual commentary (e.g. Lion's Book commentary on System 6 Unix).
+
+The goal is two fold 
+
+1. Keep the system understandable by me when I have serious breaks in my development
+2. Hopefully have a system that is easy to grok by others who might be currious
+
+
+
