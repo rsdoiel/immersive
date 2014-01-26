@@ -1,7 +1,7 @@
 ;;
 ;; ls - wrap the Unix ls command
 ;;
-(defun ls (&optional (filter "./*.*"))
+(defun ls (&optional (filter "./"))
   "list the contents of a directory.
   Args: filter is a Unix path string can include wild cards.
   Returns: A list of files and directories as pathnames"
