@@ -10,8 +10,8 @@
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
   (progn
-	;FIXME: implementation dependent code. Need to setup some sort of wrapper
-	;like we do for DOM compatibility to handle implementation differences in CL.
+	;FIXME: implementation dependent code, at least need to support CCL, CLISP for RPi
     (ext:chdir (convert-symbol-or-pathname pathname))
+    	;FIXME: implementation dependent code, at least need to support CCL, CLISP for RPi
     (ext:getcwd)))
 
