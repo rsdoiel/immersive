@@ -6,7 +6,7 @@
 
 ;; set a default value for *update-ed-filename* without overwriting it if
 ;; already defined.
-(defvar *update-ed* "untitled.lisp")
+(defvar *update-edit* "untitled.lisp")
 
 (defun edit (filename)
   "edit - wrap the Lisp ED function but default to downcase filename
@@ -15,14 +15,14 @@
   Returns: value of Lisp ED function."
   (ed (convert-symbol-or-pathname filename)))
 
-(defun update-ed (&optional (filename nil))
-  "update-ed - edit then load a filename.
-  Args: filename (optional), defaults to nil (i.e. use the last value of *update-ed*)
-  Side effects: filename if not nil will update update the value of *update-ed*.
+(defun update-edit (&optional (filename nil))
+  "update-edit - edit then load a filename.
+  Args: filename (optional), defaults to nil (i.e. use the last value of *update-edit*)
+  Side effects: filename if not nil will update update the value of *update-edit*.
   Returns: the results of load."
   (progn
     (if filename
-      (setq *update-ed* (convert-symbol-or-pathname filename)))
-    (ed *update-ed*)
-    (load *update-ed*)))
+      (setq *update-edit* (convert-symbol-or-pathname filename)))
+    (ed *update-edit*)
+    (load *update-edit*)))
 
