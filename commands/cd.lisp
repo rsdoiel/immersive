@@ -1,6 +1,10 @@
 ;;
 ;; Change working directory
 ;;
+;FIXME: Need to make sure conert-symbol-or-pathname is
+; available from immersive.lisp, probably need some sort of 
+; require, export, import or something...
+
 (defun cd (&optional (pathname (get-os-environment "HOME")))
   "cd is a wrapper of the Unix change directory command. Without parameters
   it will change the working directory to the value of $HOME.

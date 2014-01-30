@@ -16,6 +16,7 @@
                (:file "commands/edit")
                (:file "commands/exit")
                (:file "commands/git-scm")
+               (:file "commands/knit")
                (:file "commands/ls")
                (:file "commands/mkdir")
                (:file "commands/pwd")
