@@ -1,27 +1,24 @@
-;;;; -*- Mode: Lisp; Syntax: ANSI-Common-Lisp; Base: 10 -*-
-(defpackage #:immersive
-  (:use :cl :asdf :cl-fad))
+;;;; immersive.asd
 
-(in-package #:immersive)
-
-(defsystem #:immersive
-	   ;:name "immersive"
-	   ;:version "0.0.0"
-	   ;:author "R. S. Doiel"
-	   ;:license "BSD 2-clause License"
-	   ;:description "An immersive Lisp environment intended to run on a Raspberry Pi Model B or A"
-	   :components ((:file "immersive.lisp")
-			(:file "cat.lisp")
-			(:file "cd.lisp")
-			(:file "edit.lisp")
-			(:file "exit.lisp")
-			(:file "git-scm.lisp")
-			(:file "immersive.lisp")
-			(:file "ls.lisp")
-			(:file "mkdir.lisp")
-			(:file "pwd.lisp")
-			(:file "rmdir.lisp")
-			(:file "shell.lisp")))
-
-
+(asdf:defsystem #:immersive
+  :serial t
+  :name "immersive"
+  :version "0.0.0"
+  :description "An immersive Lisp environment intended to run on a Raspberry Pi Model B or A"
+  :author "R. S. Doiel"
+  :license "BSD 2-clause License"
+  :depends-on (#:cl-fad
+               #:hunchentoot)
+  :components ((:file "package")
+               (:file "immersive")
+               (:file "commands/cat")
+               (:file "commands/cd")
+               (:file "commands/edit")
+               (:file "commands/exit")
+               (:file "commands/git-scm")
+               (:file "commands/ls")
+               (:file "commands/mkdir")
+               (:file "commands/pwd")
+               (:file "commands/rmdir")
+               (:file "commands/shell")))
 
