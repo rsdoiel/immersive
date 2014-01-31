@@ -7,6 +7,7 @@
 ;;;; Released under the BSD 2 clause license
 ;;;; See http://opensource.org/licenses/BSD-2-Clause for details.
 ;;;;
+(in-package #:immersive)
 
 ;;
 ;; convert-symbol-or-pathname - converts a SYMBOL into a lowercase
