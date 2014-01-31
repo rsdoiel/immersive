@@ -1,6 +1,9 @@
 ;;
 ;; Change working directory
 ;;
+
+(in-package :immersive)
+
 ;FIXME: Need to make sure conert-symbol-or-pathname is
 ; available from immersive.lisp, probably need some sort of 
 ; require, export, import or something...
@@ -13,9 +16,11 @@
   (converted to lowercase and applied as a Unix path).
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
+  #+ecl 
   (progn
 	;FIXME: implementation dependent code. Need to setup some sort of wrapper
 	;like we do for DOM compatibility to handle implementation differences in CL.
     (ext:chdir (convert-symbol-or-pathname pathname))
-    (ext:getcwd)))
+    (ext:getcwd))
+   #+ccl (princ "cd Not implemented"))
 

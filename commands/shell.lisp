@@ -2,6 +2,9 @@
 ;; Define a Clisp like Shell command.
 ;;
 
+
+(in-package :immersive)
+
 (defun shell (&optional (shell_cmd "$SHELL"))
   "shell - send a command to the system shell (e.g. Bash).
 

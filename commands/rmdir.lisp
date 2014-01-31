@@ -1,6 +1,10 @@
 ;;;;
 ;;;; Wrap the Unix rmdir command
 ;;;;
+
+(in-package :immersive)
+
+
 (defun rmdir (pathname)
   "rmdir is a wrapper of the Unix remove directory command.
 

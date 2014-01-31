@@ -3,6 +3,7 @@
 ;;; symbols to strings.
 ;;; update-ed - edit a file then load it. Remember the last file worked on.
 ;;;
+(in-package :immersive)
 
 ;; set a default value for *update-ed-filename* without overwriting it if
 ;; already defined.
