@@ -5,6 +5,5 @@
   Exit the ecl shell"
   #+ecl
   (ext:quit exit_code)
-  #+ccl (quit) 
-  )
+  #+ccl (ccl:quit))
 

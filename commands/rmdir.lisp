@@ -5,15 +5,15 @@
 (in-package :immersive)
 
 
-(defun rmdir (pathname)
+(defun rmdir (folder-name)
   "rmdir is a wrapper of the Unix remove directory command.
 
   Args: pathname
  
-  + pathname is the path (relative or full) the directory you want to create.
+  + folder-name is the path (relative or full) the directory you want to create.
 
   Side effects: Changes the working directory."
-  (eq 0 
-      (shell 
-	(concatenate 'string "rmdir " 
-		     (convert-symbol-or-pathname pathname)))))
+  #+ecl
+  (ext:run-program "rmdir" `(,folder-name))
+  #+ccl
+  (ccl:run-program "rmdir" `(,folder-name)))

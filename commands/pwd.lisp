@@ -8,5 +8,5 @@
   #+ecl
   (ext:getcwd)
   #+ccl
-  (:pwd))
+  (ccl::current-directory-name))
 

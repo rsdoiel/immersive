@@ -19,5 +19,5 @@
   #+ecl 
     (progn (ext:chdir pathname) (ext:getcwd))
   #+ccl 
-    (progn (ccl::cd pathname) (ccl::pwd)))
+    (progn (ccl::cd pathname) (ccl::current-directory-name)))
 
