@@ -72,14 +72,11 @@
   "Execute git clone for a git URL.
 
   Args: repos-url as a string"
-  (git-scm "clone " 
-	   (concatenate 'string "\"" repos-url "\"")))
+  (git-scm "clone" repos-url))
 
 ;;
 ;; git-mv - shutcut for: git mv OLDNAME NEWNAME
 ;;
 (defun git-mv (old-name new-name)
-  (git-scm "mv " 
-	   (concatenate 'string "\"" old-name "\"")
-	   (concatenate 'string "\"" new-name "\"")))
+  (git-scm "mv" old-name new-name)) 
 
