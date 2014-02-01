@@ -5,5 +5,8 @@
 (in-package :immersive)
 
 (defun pwd ()
-  (ext:getcwd))
+  #+ecl
+  (ext:getcwd)
+  #+ccl
+  (:pwd))
 

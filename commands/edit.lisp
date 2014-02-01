@@ -14,7 +14,7 @@
   when filenames are symbols.
   Args: filename
   Returns: value of Lisp ED function."
-  (ed (convert-symbol-or-pathname filename)))
+  (ed filename))
 
 (defun update-edit (&optional (filename nil))
   "update-edit - edit then load a filename.
@@ -23,7 +23,7 @@
   Returns: the results of load."
   (progn
     (if filename
-      (setq *update-edit* (convert-symbol-or-pathname filename)))
+      (setq *update-edit* filename))
     (ed *update-edit*)
     (load *update-edit*)))
 

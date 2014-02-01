@@ -9,43 +9,13 @@
 ;;
 ;; git-scm - wrap the basic git command.
 ;;
-(defun git-scm (action &optional (arg1 nil) (arg2 nil) (arg3 nil) (arg4 nil) (arg5 nil))
-  (let ((cmd nil))
-    (setq action (convert-symbol-or-pathname action))
-
-    ;;FIXME use variable lisp parameters instead of arg1, arg2, arg3, ...
-    (if (not arg1)
-      (setq arg1 " "))
-    (setq arg1 (convert-symbol-or-pathname arg1))
-
-    (if (not arg2)
-      (setq arg2 " "))
-    (setq arg2 (convert-symbol-or-pathname arg2))
-
-    (if (not arg3)
-      (setq arg3 " "))
-    (setq arg3 (convert-symbol-or-pathname arg3))
-
-    (if (not arg4)
-      (setq arg4 " "))
-    (setq arg4 (convert-symbol-or-pathname arg4))
-
-    (if (not arg5)
-      (setq arg5 " "))
-    (setq arg5 (convert-symbol-or-pathname arg5))
-
-
-    (setq cmd (string-trim " "
-			   (concatenate 'string "git " 
-					action " " 
-					arg1 " " 
-					arg2 " " 
-					arg3 " " 
-					arg4 " " 
-					arg5)))
-    (princ cmd)
-    (if (> (ext:system cmd) 0) () t)))
-
+(defun git-scm (action &rest more-args)
+  (let ((cmd (concatenate 'list `("git" ,action) more-args)))
+    #+ecl
+    (ext:run-program (first cmd) (rest cmd) :output t :error t)
+    #+ccl
+    (ccl:run-program (first cmd) (rest cmd) :output t :error t)
+))
 
 ;;
 ;; git-status - run git status on the repo.
@@ -57,7 +27,7 @@
 ;; git-add - Add a file to the git repo.
 ;;
 (defun git-add (fname)
-  (git-scm "add" (convert-symbol-or-pathname fname)))
+  (git-scm "add" fname))
 
 ;;
 ;; git-commit - Commit the current state of development.
@@ -67,8 +37,7 @@
 
   Args: msg - a string message to include on the commit.
   Returns status of commit"
-  (git-scm "commit -am" 
-	   (concatenate 'string "\"" msg "\"")))
+  (git-scm "commit" "-am" msg))  
 
 ;;
 ;; git-push - Push the current state to master
@@ -113,4 +82,4 @@
   (git-scm "mv " 
 	   (concatenate 'string "\"" old-name "\"")
 	   (concatenate 'string "\"" new-name "\"")))
-		   
+

@@ -17,10 +17,7 @@
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
   #+ecl 
-  (progn
-	;FIXME: implementation dependent code. Need to setup some sort of wrapper
-	;like we do for DOM compatibility to handle implementation differences in CL.
-    (ext:chdir (convert-symbol-or-pathname pathname))
-    (ext:getcwd))
-   #+ccl (princ "cd Not implemented"))
+    (progn (ext:chdir pathname) (ext:getcwd))
+  #+ccl 
+    (progn (ccl::cd pathname) (ccl::pwd)))
 
