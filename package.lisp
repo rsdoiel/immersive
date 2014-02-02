@@ -1,5 +1,6 @@
 ;;;; package.lisp
 
 (defpackage #:immersive
-  (:use #:cl))
+  (:use #:cl)
+  (:export :cd :pwd :ls :update-edit :edit :mkdir :rmdir))
 
