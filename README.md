@@ -62,8 +62,12 @@ When _ecl_ finishes starting try--
 
 ```lisp
     (ql:quickload "immersive")
-    (in-package :immersive)
+    (use-package :immersive)
 ```
+
+Adding these two lines to your Lisp init will make available immersive commands
+available in the COMMON-LISP-USER package.
+
 
 To install see [INSTALL.md](INSTALL.md)
 
