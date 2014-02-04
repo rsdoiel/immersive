@@ -17,6 +17,8 @@
   Returns: The new working directory location as a pathname."
     (if parent
       (progn
+	#+sbcl
+	(error "mkdir -p not implemented yet.")
 	#+ecl
 	(ext:run-program "mkdir" `("-p" ,folder-name)
 			 :output t :error t)
@@ -24,6 +26,8 @@
 	(ccl:run-program "mkdir" `("-p" ,folder-name)
 			 :output t :error t))
       (progn
+	#+sbcl
+	(error "mkdir not implemented yet.")
 	#+ecl
 	(ext:run-program "mkdir" `(,folder-name)
 			 :output t :error t)
