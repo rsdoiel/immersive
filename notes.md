@@ -92,7 +92,7 @@ I removed the pkg (sudo apt-get remove libgc-dev libgc1c2 and that solved that p
 
 ## Building a SD card image, simple OS, something to host Immersive
 
-MagPi issues 15 and 20 have articles on how to build an OS on Raspberry Pi-- "Baking your own Pi filling" by Martin Kalitis.  These articles take you through using a Ubuntu/Debian system to cross compile and build an SD card image.
+MagPi issues 15 (starting page 28) and 20 (starting page 40) have articles on how to build an OS on Raspberry Pi-- "Baking your own Pi filling" by Martin Kalitis.  These articles take you through using a Ubuntu/Debian system to cross compile and build an SD card image.
 
 Cambridge University has a free course material introducing ARM assembly for Rasberry Pi.  Course material is titled [Baking Pi – Operating Systems Development](https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/) by [Alex Chadwick](mailto:awc32@cam.ac.uk).  This provides a feel for basic hardware control at the assembly level. Also
 includes links to ARM Refeence material and other [Downloadable materials](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
