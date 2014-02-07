@@ -98,7 +98,7 @@ Cambridge University has a free course material introducing ARM assembly for Ras
 includes links to ARM Refeence material and other [Downloadable materials](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html)
 
 
-Two academic OSes also offer interesting possibilty. [Minux 3](http://minix3.org) is in the process of being ported to Raspberry Pi as well as [xv6](http://pdos.csail.mit.edu/6.828/2012/xv6.html). While the latter is explicitly
+Two academic OSes also offer interesting possibilty. [Minix 3](http://minix3.org) is in the process of being ported to Raspberry Pi as well as [xv6](http://pdos.csail.mit.edu/6.828/2012/xv6.html). While the latter is explicitly
 targetted at teaching OS implementation (as early Minix) it is a simple enough platform when available to 
 Raspberry Pi could host immersive.  Minix 3 also offers interesting possibitilies with its microkernel architecture. In that approach Immersive would just be another "service" available to the Kernel. RISC processors seem well suited
 to hosting Lisps.
