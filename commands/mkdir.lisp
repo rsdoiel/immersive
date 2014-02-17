@@ -1,6 +1,9 @@
 ;;;;
 ;;;; Wrap the Unix mkdir command
 ;;;;
+
+(in-package :immersive)
+
 (defun mkdir (pathname &optional (parent nil))
   "mkdir is a wrapper of the Unix make directory command. Without parameters
   it will change the working directory to the value of $HOME.

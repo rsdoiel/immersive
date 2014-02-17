@@ -1,6 +1,9 @@
 ;;
 ;; ls - wrap the Unix ls command
 ;;
+
+(in-package :immersive)
+
 (defun ls (&optional (filter "./"))
   "list the contents of a directory.
   Args: filter is a Unix path string can include wild cards.

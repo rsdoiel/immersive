@@ -2,6 +2,9 @@
 ;; Define a Clisp like Shell command.
 ;;
 
+
+(in-package :immersive)
+
 (defun shell (&optional (shell_cmd "$SHELL"))
   "shell - send a command to the system shell (e.g. Bash).
 
@@ -11,7 +14,9 @@
   Args: the command to send to the shell as a string.
   
   Returns: t if successful, nil otherwise."
-  (eq 0 (ext:system shell_cmd)))
+  #+ecl
+  (eq 0 (ext:system shell_cmd))
+  #+ccl (princ "shell not implemented."))
 
 ;;
 ;; Quick shortcut to escape to bash.

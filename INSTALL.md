@@ -1,14 +1,15 @@
-cl-immersive
-============
+immersive
+=========
 
 The goal is to get an immersive Lisp environment up and running on a Raspberry Pi Model B.
 This would start out with a simple replacement shell based on *ecl*'s REPL.  Eventually
-it would be cool to a graphical UI going. That seems a long way off right now so the first step is setting things up so I can hack happily in Lisp.
+it would be cool to a graphical UI going. That seems a long way off right now so the 
+first step is setting things up so I can hack happily in Lisp.
 
 My choices
 
 + ecl for Lisp and a REPL
-+ vi for editor (EMACS/SLIME seems like overkill on a Raspberry Pi)
++ vim for editor (EMACS/SLIME seems like overkill on a Raspberry Pi)
 + Some sort of readline support (e.g. *rlwrap*)
 + Quicklisp for packaging
 + Basic mapping of common Unix commands. E.g.
@@ -76,26 +77,49 @@ Normally @/usr/local/bin@ is in your @$PATH@. If not you may need to add it.
 We can now execute *ecl* from the command line at @/usr/local/bin/ecl@. Your Lisp
 is now installed.
 
-## Step 2 - adding immersive
+## Step 2 - adding Adding Quicklisp
 
-Clone immersive in your $HOME directory.
+1. Download quicklisp.lisp
+2. Launch _ecl_ and load quicklisp.lisp
+3. exit _ecl_ and clone the immersive repo in _quicklisp/local-projects_
+
 
 ```shell
-    git clone git@github.com:rsdoiel/immersive.git immersive
+    curl -O http://beta.quicklisp.org/quicklisp.lisp
+    ecl
+    (load "quicklisp.lisp")
+    (quicklisp-quickstart:install)
+    (ql:add-to-init-file)
+    (quit)
 ```
 
-Now I can use *immersive* via my Lisp init (e.g. *.eclrc*)
+## Step 3 - loading immersive
+
+
+1. Restart _ecl_ then use _ql:quickload_ to add _immersive_
+2. switch to the immersive namespace and play with immersive
+3. go back to the cl-user namespace and quit
+
+```shell
+    cd quicklisp/local-projects
+    git clone https://github.com/rsdoiel/immersive.git
+    cd
+    ecl
+```
 
 ```lisp
-    ;; Load immersive
-    (load (concatenate 'string (ext:getenv "HOME") "/immersive/immersive.lisp"))    
-    (immersive)
+    (ql:quickload "immersive")
+    (in-package :immersive)
+    ;; play around with lisp and immersive
+    (in-package :cl-user)
+    (quit)
 ```
+
 
 Immersive's extensions to *ECL*'s repl should now be available. Note this doesn't give you
 command line history and editing. For that we need to use something like *rlwrap*.
 
-## Step 3 - add commnad line editing and history with rlwrap
+## Optional, Step 4 - add commnad line editing and history with rlwrap
 
 This part is a kludge but it helpful until *immersive* has its own repl.  In /etc/profile.d/ 
 folder I create a shell script to be included by /etc/profile.  I'm calling it ecl-user.sh for

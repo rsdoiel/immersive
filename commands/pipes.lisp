@@ -3,6 +3,8 @@
 ;;;; tee program.
 ;;;;
 
+(in-package :immersive)
+
 ;;;
 ;;; pipe-line
 ;;;

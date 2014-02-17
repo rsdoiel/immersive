@@ -3,6 +3,7 @@
 ;;; symbols to strings.
 ;;; update-ed - edit a file then load it. Remember the last file worked on.
 ;;;
+(in-package :immersive)
 
 ;; set a default value for *update-ed-filename* without overwriting it if
 ;; already defined.
@@ -13,7 +14,7 @@
   when filenames are symbols.
   Args: filename
   Returns: value of Lisp ED function."
-  (ed (convert-symbol-or-pathname filename)))
+  (ed filename))
 
 (defun update-edit (&optional (filename nil))
   "update-edit - edit then load a filename.
@@ -22,7 +23,7 @@
   Returns: the results of load."
   (progn
     (if filename
-      (setq *update-edit* (convert-symbol-or-pathname filename)))
+      (setq *update-edit* filename))
     (ed *update-edit*)
     (load *update-edit*)))
 

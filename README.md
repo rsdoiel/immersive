@@ -25,16 +25,44 @@ community. I'm not an experienced enough Lisper to take over a project like that
 
 
 _immersive_ is targetted specifically at the Raspberry Pi and _ecl_ but I also 
-want to keep options open for other CL. So to bootstrap development everything right
-now is in one small Lisp file named [immersive.lisp](immersive.lisp).  You can add
-it to your Lisp init (e.g. $HOME/.eclrc for _ecl_ lisp).
+want to keep options open for other Common Lisp. So to bootstrap development everything right
+now you need to add immersive to your "local-projects" of [Quicklisp](http://www.quicklisp.org).
 
+Preparing ecl
+
+```shell
+    curl -O http://beta.quicklisp.org/quicklisp.lisp
+    ecl
+```
+
+Then from the Lisp prompt
 
 ```lisp
-    ;; Load immersive's code base
-    (load "immersive.lisp")
-    ;; Initial the environment
-    (immersive)
+    (load "quicklisp.lisp")
+    (ql:add-to-init-file)
+    (quit)
+```
+
+Finally go into your _quicklisp/local-projechs_ folder and checkout [immersive](https://github.com/rsdoiel/immersive.git)
+from github.
+
+```shell
+    cd quicklisp/local-projects
+    git clone https://github.com/rsdoiel/immersive.git
+```
+
+Now you can start _ecl_ and use _Quicklisp_ to load _immersive_
+
+```shell
+    cd
+    ecl
+```
+
+When _ecl_ finishes starting try--
+
+```lisp
+    (ql:quickload "immersive")
+    (in-package :immersive)
 ```
 
 To install see [INSTALL.md](INSTALL.md)
