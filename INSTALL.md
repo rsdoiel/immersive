@@ -107,13 +107,15 @@ is now installed.
     ecl
 ```
 
+Now load _immersive_ and expose the symbols to COMMON-LISP-USER.
+
 ```lisp
     (ql:quickload "immersive")
-    (in-package :immersive)
+    (use-package :immersive)
     ;; play around with lisp and immersive
-    (in-package :cl-user)
-    (quit)
 ```
+
+In _.eclrc_ I've added these two lines lines so _immersive_ is ready when I start _ecl_.
 
 
 Immersive's extensions to *ECL*'s repl should now be available. Note this doesn't give you
@@ -134,5 +136,4 @@ Here's what my */etc/profile.d/ecl-user.sh* looks like.
     export ECLS_BREAK_CHARS="\"#'(),;\`\\|!?[]{}"
     alias ecl="rlwrap -b \$ECLS_BREAK_CHARS $ECLS"
 ```
-
 

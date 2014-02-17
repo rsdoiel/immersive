@@ -5,8 +5,10 @@
 (in-package :immersive)
 
 (defun pwd ()
+  #+sbcl
+  (error "pwd not implemented yet.")
   #+ecl
   (ext:getcwd)
   #+ccl
-  (:pwd))
+  (ccl::current-directory-name))
 

@@ -7,8 +7,8 @@
   :description "An immersive Lisp environment intended to run on a Raspberry Pi Model B or A"
   :author "R. S. Doiel"
   :license "BSD 2-clause License"
-  :depends-on (#:cl-fad
-               #:hunchentoot)
+  ;;;:depends-on (#:cl-fad
+  ;;;             #:hunchentoot)
   :components ((:file "package")
                (:file "immersive")
                (:file "commands/cat")

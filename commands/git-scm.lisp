@@ -11,6 +11,8 @@
 ;;
 (defun git-scm (action &rest more-args)
   (let ((cmd (concatenate 'list `("git" ,action) more-args)))
+    #+sbcl
+    (error "git-scm not implemented for SBCL")
     #+ecl
     (ext:run-program (first cmd) (rest cmd) :output t :error t)
     #+ccl
