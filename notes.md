@@ -110,6 +110,16 @@ stopper given recent as well as ancient computer history.
 
 
 
+## Random Ideas about what immersive might become
+
++ Cast a Posix friendly, Unix like set a functions supporting easy composition in Lisp that allow clear interaction with the host operating system (or kernel)
+    - ls function would lists files like Unix's *ls* command but in Lisp it should return the listing as a set of file paths on the file system; command line options should map sensibly to optional lisp key parameters or optional parameters (e.g. -l might be :details true other something)
+    - cp would be a function that copies files; while the side effect would be the desired result like print type command, it would return a status object indicating the successful copy as well as confirming the filename of the new copy created
+    - cd function would change the working directory in the REPL, its purpose, like _cp_ would be the side effect but the function would return the new value of the working directory; it should support relative path designation like Unix (e.g. ../../, ./)
+    - Pipes would be replaced by functional composition
+    - Where sensible output would be delivered as Lisp data expressions
+    
+
 
 
 
