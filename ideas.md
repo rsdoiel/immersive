@@ -163,4 +163,49 @@ The goal is two fold
 2. Hopefully have a system that is easy to grok by others who might be currious
 
 
+## Observations on Lisp and Unix
+
+Lispmachines were cool. As a historical machine they are still cool.  If I were building
+Lispmachines today they would be different.  I don't see a requirement for hostility
+to timesharing systems since the general horse power of even a Raspberry Pi is significant
+compared with the early Lispmachine implementations.  RAM, disc and multi-core CPU with GPU
+are the norm now.  There are some really nice ideas from Unix that I actually think are
+Lisp-ish when you step back a bit.  Unix utility are often simple, move data as text
+and the shells support convienent composition via the Unix pipe.  Lisp can be simple
+(though it can also be complex), it is easily composible where code can also be data.
+Building from a functional preference I think these ideas are actually compatible it seems
+mostly an argument about either how do we interpret a text stream or how do we represent
+data flow.
+
+Let's think about some common Unix utilities. _cp_ makes it easy to copy a file. This can
+be easily implemented in lisp as a function. _ls_ returns a list of files, this too can 
+easily be implemented as a lisp function.  _find_ traverses a file system and depeneding
+on options returns a list of files and/or directories. If we have a Lisp implementation
+of _ls_ that returns a list of file paths we can use Lisp's own find to filter the results.
+If we implement a _stat_ in lisp we can even start filter the file system using an 
+extended version of Lisp's find.  Then take _grep_. That's just looking inside the file.
+Composing it with _ls_ or _find_ gives of a list of files to scan and using the Common Lisp
+regular expression module gives us a quick query language to identify interesting contents.
+
+The pipe is interesting. A simple map would be to say Lisp functions can be nested such 
+that you achieve similar composibility.  Nesting can get confusing if all you want to
+represent is a sequential process (e.g. do this, then that, then the other thing) but Lisp
+also contains symantics for this which could be easily wrapped up in a macro.  I don't
+see an incompatibility other than Unix's syntax looks very very different than Lisp's
+syntax.
+
+So how does this concern _immersive_?  Immersive should make working with things like the
+file system in a REPL easier than the Unix shells.  It should appear familiar (if you 
+overcome fear of parenthesis) in the sense if you know _cp_ is used to copy files than
+the immersive Lisp function _cp_ can also copy files.  Just as modern Unix shells have
+added things like command line histories, command completion, immersive should provide
+a REPL which also supports this along with other features like syntax highlighting, the
+ability to save individual functions defined in a session to specific files. Finally 
+immersive should take advantage of the underlying OS's ability to run multiple processes
+and have the options of handling the results asynchoniously.  If immersive can achieve
+that than I think it might prove useful and interesting. In the end it is all just code
+and I it is useful and fun then I'm content.
+
+
+
 

@@ -1,7 +1,7 @@
 
 ## Approach one
 
-Since this is a list project it makes sense to create a simple build script in Lisp
+Since this is a Lisp project it makes sense to create a simple build script in Lisp
 to process things. I want to use Mustache style templates and Markdown files to
 generate the site statically.
 
@@ -14,6 +14,6 @@ generate the site statically.
 
 ## Aproach two
 
-This would be the quick and dirty. Use YUI3/HandleJS/Marked to pull markdown content 
+This would be the quick and dirty. Use YUI3/HandleJS/marked to pull markdown content 
 and pages via modified links to Markdown document.
 
