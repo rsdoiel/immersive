@@ -43,9 +43,10 @@ The following will only need to be done once to get the right Raspbian Packages 
     sudo apt-get install libncurses5-dev
     sudo apt-get install libreadline-dev
     sudo apt-get install libffi-dev
+    sudo apt-get install libsigsegv-dev
     # We'l use rlwrap to add command editing and history to ecl
     sudo apt-get install rlwrap
-    # I had to add the following libraries to support Doryen Library for cl-dormouse
+    # I had to add the following libraries to play with the Doryen Library for cl-dormouse
     sudo apt-get install upx
     sudo apt-get install libsdl1.2-dev libsdl1.2-dbg
 ```
