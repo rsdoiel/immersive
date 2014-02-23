@@ -40,11 +40,11 @@ The following will only need to be done once to get the right Raspbian Packages 
     sudo apt-get install libgmp-dev
     sudo apt-get install libgmp3-dev
     sudo apt-get install libatomic-ops-dev
+    sudo apt-get install libgc-dev
+    sudo apt-get install libsigsegv-dev
+    sudo apt-get install libffi-dev
     sudo apt-get install libncurses5-dev
     sudo apt-get install libreadline-dev
-    sudo apt-get install libffi-dev
-    sudo apt-get install libsigsegv-dev
-    sudo apt-get install libgc-dev
     sudo apt-get install libpth-dev
     # We'l use rlwrap to add command editing and history to ecl
     sudo apt-get install rlwrap
