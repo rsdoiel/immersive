@@ -36,21 +36,8 @@ The following will only need to be done once to get the right Raspbian Packages 
     sudo apt-get update
     sudo apt-get install git-core curl build-essential openssl libssl-dev
     sudo apt-get install autoconf # used when we get to adding support for stumpwm
-    # Helpful libraries
-    sudo apt-get install libgmp-dev
-    sudo apt-get install libgmp3-dev
-    sudo apt-get install libatomic-ops-dev
-    sudo apt-get install libgc-dev
-    sudo apt-get install libsigsegv-dev
-    sudo apt-get install libffi-dev
-    sudo apt-get install libncurses5-dev
-    sudo apt-get install libreadline-dev
-    sudo apt-get install libpth-dev
     # We'l use rlwrap to add command editing and history to ecl
     sudo apt-get install rlwrap
-    # I had to add the following libraries to play with the Doryen Library for cl-dormouse
-    sudo apt-get install upx
-    sudo apt-get install libsdl1.2-dev libsdl1.2-dbg
 ```
 
 Next fetch and build *ecl*.
@@ -61,10 +48,7 @@ Next fetch and build *ecl*.
     cd /usr/local/src
     git clone git://git.code.sf.net/p/ecls/ecl
     cd ecl # change to the ecl directory cloned in /usr/local/src/ecl
-    ./configure --prefix=/usr/local --enable-unicode=yes \
-      --with-clx=yes \
-      --with-asdf=yes \
-      --with-x=yes \
+    ./configure \
       "CFLAGS=-mcpu=arm1176jzf-s -DAO_USE_PTHREAD_DEFS"
     make
     sudo make install
