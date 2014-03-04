@@ -14,7 +14,6 @@
                (:file "commands/cat")
                (:file "commands/cd")
                (:file "commands/edit")
-               (:file "commands/exit")
                (:file "commands/git-scm")
                (:file "commands/knit")
                (:file "commands/ls")

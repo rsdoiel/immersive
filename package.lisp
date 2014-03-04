@@ -8,5 +8,4 @@
 	   :git-commit :git-push
 	   :git-pull 
 	   :git-push-origin-master
-	   :exit
 	   ))
