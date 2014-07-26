@@ -2,6 +2,7 @@
 These are some todo items to get be working in ecl's Common Lisp
 repl.
 
++ Look at SBCL port to the Raspberry Pi, consider building on this.
 + figure out how to enable ecl's readline by default.
 + wrap git commands so I run them from lisp repl
 + wrap common Unix commands
