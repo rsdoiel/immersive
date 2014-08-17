@@ -1,3 +1,10 @@
+
+Need to look at SBCL and see how that now compiles and works on RPi. May need a working copy of clisp to compile.  Immersive needs to work on one CL before I worry about multiple CL.
+
+Alternative approach is to take a Golang based Lisp snd evolve it both towards CL and towards the environment in my head.
+
+-----
+
 If you are OK with version 11 of ecl then you can do
 
 ```shell
