@@ -1,4 +1,33 @@
 
+Been thinking about what a proof of concept *worker-node* would look like in for immersive. It would be designed as a function evaluator without direct access to disc or OS services (e.g. opening outbound sockets).  It would receive a Lisp Experssion over https and the evaluated results.  The https service would require authentication for initial access and the lisp environment would persist only for the durration of the request and response cycle. In effect it would be
+a read, eval, print transaction. The http content type supported would only be application/x-common-lisp.
+
+Immersive would also support a *storage-node* which sole task would be to store lisp expressions based on a unique url as a key (similar to JSON data stores). The *storage-node* would be the service responsible for persistence.
+
+Immersive would have a *conductor-node* which would route requests to *worker-node*s or *storage-nodes*.  The *conductor-node* would provide a _repl_.
+
+```
+    *conductor-node* --> s-exprs --> *worker-node* --+
+    *conductor-node* <-- s-exprs --------------------+
+
+    *conductor-node* --> s-exprs --> *storage-node* --+
+    *conductor-node* <-- s-exprs --------------------+
+```
+
+https would be the transmition protocol between nodes. Access could
+be restricted by traditional http authentication mechanisms.
+
+*worker-node* would not persist data so vulnerabilities would be limited to the in-memory running lisp service.
+
+*storage-node* would not evaluate lisp or store experssions in a bucket.  You would need explicit permissions to access the buckets. Ideally the *storage-node* could be defined as a thin layer over somthing like Google Datastore, MongoDB
+or other key/value datastorage service. The *storage-node* would support create, replace, delete and exists through GET (read), POST (create/replace), DELETE (delete), and HEAD (expression is stored exists) http methods.
+
+Between the worker nodes, storage nodes and conductor nodes messaging would be valid URLs and s-expressions.
+
+The prototype of this arhitecture could be done in a simpler repl (e.g. immersive-shell). Eventually a GUI version could be imeplemented and finally the clustered version splitting worker and storage nodes among a group of RPi.
+
+
+----
 Need to look at SBCL and see how that now compiles and works on RPi. May need a working copy of clisp to compile.  Immersive needs to work on one CL before I worry about multiple CL.
 
 Alternative approach is to take a Golang based Lisp snd evolve it both towards CL and towards the environment in my head.
