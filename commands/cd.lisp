@@ -2,7 +2,6 @@
 ;; Change working directory
 ;;
 
-(in-package :immersive)
 
 ;FIXME: Need to make sure conert-symbol-or-pathname is
 ; available from immersive.lisp, probably need some sort of 

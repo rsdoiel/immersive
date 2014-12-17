@@ -7,7 +7,7 @@
 ;;;; Released under the BSD 2 clause license
 ;;;; See http://opensource.org/licenses/BSD-2-Clause for details.
 ;;;;
-(in-package #:immersive)
+;;(in-package #:immersive)
 
 ;;
 ;; immersive-getenv - get the Lisp's environment variable. This is Lisp dependant even in CL.

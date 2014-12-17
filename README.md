@@ -1,73 +1,42 @@
-immersive
+Immersive
 =========
 
-A brief exploration of using [ecl](http://ecls.sourceforge.net)'s Lisp repl as a
-user shell on a Raspberry Pi. The goal is to explore what an immersive Lisp environment
-might look like today using comodity hardware.  While inspired by Lisp Machines
-I am really not interested in recreating the past. I think it make sense to
-leverage work that has been done in non-Lisp languages (e.g. device drivers,
-basic POSIX services, fast http servers like Nginx). I like that
-_ecl_ is friendly with C compilers. This opens up lots of interesting oppurtunities.
-Lisp can be close to the metal with this approach.  _ecl_ is very close to what I need
-to start with and is easy to build on a Raspberry Pi.
+# Overview
 
-The start of my exploration is to add the bare minumum to ecl to have a friendly
-development shell (e.g. repl with readline support, easy access to Bash and vi
-to bootstrap things). After that we'll see.
+Immersive is an expliremental Lisp environment with a unix-like influenced. A number of unix-like utilities like _cat_, _ls_, _cd_ have been reimplemented as toplevel functions available to navigate the file system and orchestrate operations on it.
 
 
-### ecl long term?
+## Current exploration
 
-On 10/7/2013 Juan Jose Garcia-Rippoll [announced](http://article.gmane.org/gmane.lisp.ecl.general/10264)
-he'd like to pass the baton.  Since _ecl_ as is works fine for my purposes it
-is not yet an issue yet. In the long run I'll be watching what happens in the _ecl_
-community. I'm not an experienced enough Lisper to take over a project like that.
+Immersive is now being developed using [SBCL](http://www.sbcl.org) on the Raspberry Pi.  While it should be portable to other Raspberry Pi based Common Lisp the current gloal is to seek the shape of what immersive will become.
 
 
-_immersive_ is targetted specifically at the Raspberry Pi and _ecl_ but I also 
-want to keep options open for other Common Lisp. So to bootstrap development everything right
-now you need to add immersive to your "local-projects" of [Quicklisp](http://www.quicklisp.org).
+## Previous exploration
 
-Preparing ecl
+Initially _ecl_ was used as it was the first Common Lisp I got reliably running on the Raspberry Pi based on notes in the R-Pi community.  Eventually I switch to Closure Common Lisp (ccl) which ran faster and had the advantage that of a clear maintainer.  In the mean time _SBCL_ became available and that was adopted. Currently development is proceeding with _SBCL_ 1.2.6 (as of 2014-12-16).
+
+
+## Inspirations
+
+The idea of Lisp Machines does play a role in this exploration it is not the goal of the project to recreate their environment. At a base level there is no intention of replacing the host OS at this time (e.g. Raspbian, Debian). Instead is an exploration of what it would mean to have the host OS more closely visible in familiar function names operating at the file level.  E.g. _(ls)_ would list the files in the current directory.  While exposing the host OS through familiar function names the contents of the Lisp implementations of these functions is to return Lisp friendly objects.  Again using the _ls_ command as an example the entries should be returned as path strings that could then be consumed by other immersive functions that have knowledge of their output.
+
+
+## Getting started
+
+Currently Immersive requires the availability of ASDF 3, and Quicklisp to load
+additional Lisp modules that are used in this project. The project itself 
+is loaded by loading immersive.lisp from the git repository you've cloned.
+
 
 ```shell
-    curl -O http://beta.quicklisp.org/quicklisp.lisp
-    ecl
-```
-
-Then from the Lisp prompt
-
-```lisp
-    (load "quicklisp.lisp")
-    (ql:add-to-init-file)
-    (quit)
-```
-
-Finally go into your _quicklisp/local-projechs_ folder and checkout [immersive](https://github.com/rsdoiel/immersive.git)
-from github.
-
-```shell
-    cd quicklisp/local-projects
     git clone https://github.com/rsdoiel/immersive.git
+    cd immersive
+    sbcl
 ```
 
-Now you can start _ecl_ and use _Quicklisp_ to load _immersive_
+Once SBCL is running
 
-```shell
-    cd
-    ecl
 ```
-
-When _ecl_ finishes starting try--
-
-```lisp
-    (ql:quickload "immersive")
-    (use-package :immersive)
+    (load "./immersive.lisp")
 ```
-
-Adding these two lines to your Lisp init will make available immersive commands
-available in the COMMON-LISP-USER package.
-
-
-To install see [INSTALL.md](INSTALL.md)
 

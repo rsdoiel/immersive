@@ -1,7 +1,7 @@
 ;;;;
 ;;;; cat.lisp - wrap Unix cat command.
 ;;;;
-(in-package :immersive)
+
 ;;;
 ;;; echo-file-as-string read in an entire file and return as a string.
 ;;;

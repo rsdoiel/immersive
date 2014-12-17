@@ -3,8 +3,6 @@
 ;;
 
 
-(in-package :immersive)
-
 ;;
 ;; Quick shortcut to escape to bash.
 ;;
