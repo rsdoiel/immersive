@@ -4,7 +4,7 @@
 
 (defun pwd ()
   #+sbcl
-  (error "pwd not implemented yet.")
+  (sb-posix:getcwd)
   #+ecl
   (ext:getcwd)
   #+ccl

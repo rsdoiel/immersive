@@ -18,7 +18,7 @@
   #+clisp
     (ext:cd pathname)
   #+sbcl
-    (progn (error "getcwd not available in SBCL"))
+    (sb-posix:chdir pathname)
   #+ecl 
     (progn (ext:chdir pathname) (ext:getcwd))
   #+ccl 

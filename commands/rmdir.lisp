@@ -2,9 +2,6 @@
 ;;;; Wrap the Unix rmdir command
 ;;;;
 
-(in-package :immersive)
-
-
 (defun rmdir (folder-name)
   "rmdir is a wrapper of the Unix remove directory command.
 
@@ -14,7 +11,7 @@
 
   Side effects: Changes the working directory."
   #+sbcl
-  (error "rmdir not implemented yet.")
+  (sb-posix:rmdir `(.folder-name))
   #+ecl
   (ext:run-program "rmdir" `(,folder-name))
   #+ccl
