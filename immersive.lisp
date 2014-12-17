@@ -35,6 +35,6 @@
 (load "commands/cd.lisp")
 (load "commands/pwd.lisp")
 (load "commands/ls.lisp")
+(load "commands/cat.lisp")
 ;;(load "commands/mkdir.lisp")
 ;;(load "commands/rmdir.lisp")
-;;(load "commands/cat.lisp")
