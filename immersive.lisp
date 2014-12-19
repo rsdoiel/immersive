@@ -32,9 +32,9 @@
     #+CLOZURE (ccl:getenv name)
     default))
 
+(load "commands/cat.lisp")
 (load "commands/cd.lisp")
 (load "commands/pwd.lisp")
 (load "commands/ls.lisp")
-(load "commands/cat.lisp")
 ;;(load "commands/mkdir.lisp")
 ;;(load "commands/rmdir.lisp")
