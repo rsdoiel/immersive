@@ -3,17 +3,18 @@ Immersive
 
 # Overview
 
-Immersive is an expliremental Lisp environment with a unix-like influenced. A number of unix-like utilities like _cat_, _ls_, _cd_ have been reimplemented as toplevel functions available to navigate the file system and orchestrate operations on it.
+Immersive is an exploration of a unix-like userspace implemented
+in lisp.
 
 
-## Current exploration
+## Dependencies
 
-Immersive is now being developed using [SBCL](http://www.sbcl.org) on the Raspberry Pi.  While it should be portable to other Raspberry Pi based Common Lisp the current gloal is to seek the shape of what immersive will become.
-
-
-## Previous exploration
-
-Initially _ecl_ was used as it was the first Common Lisp I got reliably running on the Raspberry Pi based on notes in the R-Pi community.  Eventually I switch to Closure Common Lisp (ccl) which ran faster and had the advantage that of a clear maintainer.  In the mean time _SBCL_ became available and that was adopted. Currently development is proceeding with _SBCL_ 1.2.6 (as of 2014-12-16).
++ [SBCL](http://www.sbcl.org) version 1.2.x
++ [Quicklisp](http://quicklisp.org)
++ [ASDF 3](http://www.common-lisp.net/project/asdf/)
++ [magic-ed](https://github.com/sanel/magic-ed) - for embeded editing inside the repl
++ [rlwrap](https://tracker.debian.org/pkg/rlwrap) - for getting a convient readline experience in the repl
++ [immersive](https://github.com/rsdoiel/immersive)
 
 
 ## Inspirations
@@ -27,16 +28,20 @@ Currently Immersive requires the availability of ASDF 3, and Quicklisp to load
 additional Lisp modules that are used in this project. The project itself 
 is loaded by loading immersive.lisp from the git repository you've cloned.
 
+1. Install [SBCL](http://wwww.sbcl.org)
+2. Install [quicklisp](http://quicklisp.org)
+3. Install [magic-ed](http://github.com/senal/magic-ed) as a quicklisp local package
+4. Clone immersive and make a new SBCL core image.
 
 ```shell
     git clone https://github.com/rsdoiel/immersive.git
     cd immersive
-    sbcl
+    sbcl --script make-immersive-shell.lisp
 ```
 
-Once SBCL is running
+5. Run SBCL with the immersive core image and play around
 
 ```
-    (load "./immersive.lisp")
+    sbcl --core immersive-shell
 ```
 
