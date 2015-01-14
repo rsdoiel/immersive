@@ -15,6 +15,8 @@ repl.
 	- rm
 	- chown
 	- chmod
++ Need a "split" function for quick and dirty text parsing
++ Need to add "ed-load" and make sure magic-ed is loaded and available to immersive.
 + write a helpful "find" command rather than wrapping the Unix one
 	- looks at cl-fad package to see if it has what I need.
 + figure out how to create a sandbox sub-shell for development
