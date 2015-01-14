@@ -4,7 +4,6 @@
 ;;;
 ;;; Author: R. S. Doiel, <rsdoiel@yahoo.com>
 ;;;
-(in-package :immersive)
 
 ;;
 ;; git-scm - wrap the basic git command.

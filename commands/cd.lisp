@@ -2,7 +2,6 @@
 ;; Change working directory
 ;;
 
-(in-package :immersive)
 
 ;FIXME: Need to make sure conert-symbol-or-pathname is
 ; available from immersive.lisp, probably need some sort of 
@@ -16,8 +15,10 @@
   (converted to lowercase and applied as a Unix path).
   Side effects: Changes the working directory.
   Returns: The new working directory location as a pathname."
+  #+clisp
+    (ext:cd pathname)
   #+sbcl
-    (progn (error "getcwd not available in SBCL"))
+    (sb-posix:chdir pathname)
   #+ecl 
     (progn (ext:chdir pathname) (ext:getcwd))
   #+ccl 

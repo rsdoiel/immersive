@@ -2,7 +2,6 @@
 ;; ls - wrap the Unix ls command
 ;;
 
-(in-package :immersive)
 
 (defun ls (&optional (filter "./"))
   "list the contents of a directory.
@@ -20,11 +19,14 @@
         (if (and (not base-path) (not base-type))
           (setq base-path (pathname-directory
                             (pathname (concatenate 'string filter "/")))))
+     ;;FIXME:  CLisp uses ext:dir for fetching directory contents
+     ;; e.g. #+CLisp and #-Clisp
         (concatenate 'list
                      (directory (make-pathname :directory 
                                                (append base-path '(:wild))))
                      (directory (make-pathname :directory base-path
-                                               :name "*" :type "*")))))))
+                                               :name "*" :type "*")))
+	))))
 
 
 ;;

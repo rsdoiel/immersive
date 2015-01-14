@@ -21,8 +21,6 @@ These are some todo items to get be working in SBCL.
 	- wc
 	- find
 	- grep
-+ split/cut function for quick and dirty file parsing 
-+ ed-load (depends on magic-ed) for editor access
 + Add other useful commands like mime-type-of
 + create a secure machanism to send computation to other immmersive instances (e.g. via secure http/webRTC channel)
 

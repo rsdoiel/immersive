@@ -2,8 +2,6 @@
 ;;;; Wrap the Unix mkdir command
 ;;;;
 
-(in-package :immersive)
-
 (defun mkdir (folder-name &optional (parent nil))
   "mkdir is a wrapper of the Unix make directory command. Without parameters
   it will change the working directory to the value of $HOME.
@@ -18,7 +16,7 @@
     (if parent
       (progn
 	#+sbcl
-	(error "mkdir -p not implemented yet.")
+	(sb-posix:mkdir `(,folder-name))
 	#+ecl
 	(ext:run-program "mkdir" `("-p" ,folder-name)
 			 :output t :error t)
@@ -27,7 +25,7 @@
 			 :output t :error t))
       (progn
 	#+sbcl
-	(error "mkdir not implemented yet.")
+	(sb-posix:mkdir `(,folder-name))
 	#+ecl
 	(ext:run-program "mkdir" `(,folder-name)
 			 :output t :error t)

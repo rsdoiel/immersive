@@ -7,7 +7,10 @@
 ;;;; Released under the BSD 2 clause license
 ;;;; See http://opensource.org/licenses/BSD-2-Clause for details.
 ;;;;
-(in-package #:immersive)
+
+;; Depends on magic-ed for repl editor support
+(require "asdf")
+(require "magic-ed")
 
 ;;
 ;; immersive-getenv - get the Lisp's environment variable. This is Lisp dependant even in CL.
@@ -29,3 +32,9 @@
     #+CLOZURE (ccl:getenv name)
     default))
 
+(load "commands/cat.lisp")
+(load "commands/cd.lisp")
+(load "commands/pwd.lisp")
+(load "commands/ls.lisp")
+;;(load "commands/mkdir.lisp")
+;;(load "commands/rmdir.lisp")
